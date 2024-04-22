@@ -1,0 +1,489 @@
+<div class="container bg-white">
+  <div class="row ">
+    <form [formGroup]="informazioniFornituraForm" (ngSubmit)="inviaInformazioniFornitura()">
+        <div>
+          <div class="col-md-12 p-3 border rounded width-90">
+            <div class="col-md-12 pb-2">Sede fornitura</div>
+            <div class="row">
+              <div class="col-md-6 pb-2">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="cdTipoFornitura" [ngClass]="{
+                        'has-error':
+                          informazioniFornituraForm.controls.cdTipoFornitura
+                            .invalid,
+                        'is-valid':
+                          informazioniFornituraForm.controls.cdTipoFornitura
+                            .valid
+                      }">Tipo Fornitura *</label>
+                  </div>
+                  <div class="col-md-8">
+                    <select name="" formControlName="cdTipoFornitura" class="form-select">
+                      <option value="null"></option>
+                      <option value="{{ tipoFornitura.cdTipoFornitura }}" *ngFor="let tipoFornitura of tipiFornitura"
+                        value="">
+                        {{ tipoFornitura.dsTipoFornitura }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 pb-2">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="pdr" [ngClass]="{
+                        'has-error':
+                          informazioniFornituraForm.controls.pdr.invalid,
+                        'is-valid': informazioniFornituraForm.controls.pdr.valid
+                      }">
+                      Pdr*
+                    </label>
+                  </div>
+                  <div class="col-md-8">
+                    <input type="text" formControlName="pdr" class="form-control" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6  pb-2">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="matricolaContatore" [ngClass]="{
+                        'has-error':
+                          informazioniFornituraForm.controls.matricolaContatore
+                            .invalid,
+                        'is-valid':
+                          informazioniFornituraForm.controls.matricolaContatore
+                            .valid
+                      }">
+                      Matricola Contatore*
+                    </label>
+                  </div>
+                  <div class="col-md-8">
+                    <input type="text" formControlName="matricolaContatore" class="form-control" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6  pb-2">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="volumeMcAnnuo" [ngClass]="{
+                        'has-error':
+                          informazioniFornituraForm.controls.volumeMcAnnuo
+                            .invalid,
+                        'is-valid':
+                          informazioniFornituraForm.controls.volumeMcAnnuo.valid
+                      }">
+                      Volume mc annuo*
+                    </label>
+                  </div>
+                  <div class="col-md-8">
+                    <input type="number" formControlName="volumeMcAnnuo" class="form-control" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6  pb-2">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="tipoContatore" [ngClass]="{
+                        'has-error':
+                          informazioniFornituraForm.controls.tipoContatore
+                            .invalid,
+                        'is-valid':
+                          informazioniFornituraForm.controls.tipoContatore.valid
+                      }">
+                      Tipo Contatore
+                    </label>
+                  </div>
+                  <div class="col-md-8">
+                    <select type="text" formControlName="tipoContatore" class="form-select">
+                      <option value=""></option>
+                      <option *ngFor="let tipoContatore of tipiContatore" value="{{ tipoContatore.classe }}">
+                        {{ tipoContatore.cdTipoContatore }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6  pb-2">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="cabinaRemi" [ngClass]="{
+                        'has-error':
+                          informazioniFornituraForm.controls.cabinaRemi.invalid,
+                        'is-valid':
+                          informazioniFornituraForm.controls.cabinaRemi.valid
+                      }">
+                      Cabina remi
+                    </label>
+                  </div>
+                  <div class="col-md-8">
+                    <select type="text" formControlName="cabinaRemi" class="form-select">
+                      <option value=""></option>
+                      <option *ngFor="let cabinaRemi of cabineRemi" value="{{ cabinaRemi.cdRemi }}">
+                        {{ cabinaRemi.cdGsDistributore }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6  pb-2">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="matricolaConvertitore" [ngClass]="{
+                        'has-error':
+                          informazioniFornituraForm.controls
+                            .matricolaConvertitore.invalid,
+                        'is-valid':
+                          informazioniFornituraForm.controls
+                            .matricolaConvertitore.valid
+                      }">
+                      Matricola Convertitore
+                    </label>
+                  </div>
+                  <div class="col-md-8">
+                    <input type="text" formControlName="matricolaConvertitore" class="form-control" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 pb-2">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="tipologiaUtenza" [ngClass]="{
+                        'has-error':
+                          informazioniFornituraForm.controls.tipologiaUtenza
+                            .invalid,
+                        'is-valid':
+                          informazioniFornituraForm.controls.tipologiaUtenza
+                            .valid
+                      }">
+                      Tipologia Utenza*
+                    </label>
+                  </div>
+                  <div class="col-md-8">
+                    <select type="number" formControlName="tipologiaUtenza" class="form-select">
+                      <option value=""></option>
+                      <option *ngFor="let tipologiaUtenza of tipologieUtenze" value="{{ tipologiaUtenza.id }}">
+                        {{ tipologiaUtenza.descrizione }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6  pb-2">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="correttoreMisuraVolumi" [ngClass]="{
+                        'has-error':
+                          informazioniFornituraForm.controls
+                            .correttoreMisuraVolumi.invalid,
+                        'is-valid':
+                          informazioniFornituraForm.controls
+                            .correttoreMisuraVolumi.valid
+                      }">
+                      Correttore Misura Volumi*
+                    </label>
+                  </div>
+                  <div class="col-md-8">
+                    <select type="text" formControlName="correttoreMisuraVolumi" class="form-select">
+                      <option value=""></option>
+                      <option *ngFor="let c of correttoreArray" value="{{c.cdCorrettoreMisuraVolumi}}">{{c.descrizione}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 pb-2">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="tipoUtilizzo" [ngClass]="{
+                        'has-error':
+                          informazioniFornituraForm.controls.tipoUtilizzo
+                            .invalid,
+                        'is-valid':
+                          informazioniFornituraForm.controls.tipoUtilizzo.valid
+                      }">
+                      Tipo Utilizzo*
+                    </label>
+                  </div>
+                  <div class="col-md-8">
+                    <select type="text" formControlName="tipoUtilizzo" class="form-select">
+                      <option value=""></option>
+                      <option *ngFor="let tipoUtilizzo of tipiUtilizzo" value="{{ tipoUtilizzo.cdTipoUtilizzo }}">
+                        {{ tipoUtilizzo.dsTipoUtilizzo }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6  pb-2">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="distributore" [ngClass]="{
+                        'has-error':
+                          informazioniFornituraForm.controls.distributore
+                            .invalid,
+                        'is-valid':
+                          informazioniFornituraForm.controls.distributore.valid
+                      }">
+                      Distributore*
+                    </label>
+                  </div>
+                  <div class="col-md-8">
+                    <select type="text" formControlName="distributore" class="form-select">
+                      <option value=""></option>
+                      <option *ngFor="let distributore of distributori" value="{{ distributore.cdDistributore }}">
+                        {{ distributore.dsDistributore }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6  pb-2">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="categoriaUso" [ngClass]="{
+                        'has-error':
+                          informazioniFornituraForm.controls.categoriaUso
+                            .invalid,
+                        'is-valid':
+                          informazioniFornituraForm.controls.categoriaUso.valid
+                      }">
+                      Categoria uso*
+                    </label>
+                  </div>
+                  <div class="col-md-8">
+                    <select type="text" formControlName="categoriaUso" class="form-select">
+                      <option value=""></option>
+                      <option *ngFor="let categoriUso of categorieUso" value="{{ categoriUso.cdCategoriaUso }}">
+                        {{ categoriUso.dsCategoriaUso }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6  pb-2">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="tipoAccise" [ngClass]="{
+                        'has-error':
+                          informazioniFornituraForm.controls.tipoAccise.invalid,
+                        'is-valid':
+                          informazioniFornituraForm.controls.tipoAccise.valid
+                      }">
+                      Tipo Accise*
+                    </label>
+                  </div>
+                  <div class="col-md-8">
+                    <select type="text" formControlName="tipoAccise" class="form-select">
+                      <option value=""></option>
+                      <option *ngFor="let a of acciseArray" value="{{a.cdTipoAccisa}}">{{a.descrizione}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6  pb-2">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="classePrelievo" [ngClass]="{
+                        'has-error':
+                          informazioniFornituraForm.controls.classePrelievo
+                            .invalid,
+                        'is-valid':
+                          informazioniFornituraForm.controls.classePrelievo
+                            .valid
+                      }">
+                      Classe Prelievo*
+                    </label>
+                  </div>
+                  <div class="col-md-8">
+                    <select type="text" formControlName="classePrelievo" class="form-select">
+                      <option value=""></option>
+                      <option *ngFor="let classePrelievo of classiPrelievo"
+                        value="{{ classePrelievo.cdClassePrelievo }}">
+                        {{ classePrelievo.cdClassePrelievo }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6  pb-2">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="accisaAgevolata" [ngClass]="{
+                        'has-error':
+                          informazioniFornituraForm.controls.accisaAgevolata
+                            .invalid,
+                        'is-valid':
+                          informazioniFornituraForm.controls.accisaAgevolata
+                            .valid
+                      }">
+                      Accisa Agevolata*
+                    </label>
+                  </div>
+                  <div class="col-md-8">
+                    <select type="text" formControlName="accisaAgevolata" class="form-select">
+                      <option value=""></option>
+                      <option *ngFor="let a of agevolataArray" value="{{a.cdAccisaAgevolata}}">{{a.descrizione}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6  pb-2">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="clienteDiretto" [ngClass]="{
+                        'has-error':
+                          informazioniFornituraForm.controls.clienteDiretto
+                            .invalid,
+                        'is-valid':
+                          informazioniFornituraForm.controls.clienteDiretto
+                            .valid
+                      }">
+                      Cliente Diretto*
+                    </label>
+                  </div>
+                  <div class="col-md-8">
+                    <select type="text" formControlName="clienteDiretto" class="form-select">
+                      <option value=""></option>
+                      <option *ngFor="let d of direttoArray" value="{{d.cdClienteDiretto}}">{{d.descrizione}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6  pb-2">
+                <div class="row">
+                  <div class="col-md-3">
+                    <label for="licenzaOfficina" [ngClass]="{
+                        'has-error':
+                          informazioniFornituraForm.controls.licenzaOfficina
+                            .invalid,
+                        'is-valid':
+                          informazioniFornituraForm.controls.licenzaOfficina
+                            .valid
+                      }" class="form-check-label">
+                      Licenza Officina *
+                    </label>
+                  </div>
+                  <div class="col-md-8">
+                    <input type="checkbox" value="true" formControlName="licenzaOfficina" id="licenzaOfficina" class="form-check-input" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ngx-shared-indirizzo
+        [data]="dataIndirizzo" [infoClasses]="forCssClasses"
+        [toponimi]="toponimi" [provincie]="provincie"
+        [codiceContratto]="codiceContratto"
+        (sendInformationOnValidityChanges)="updateChanges($event)"
+        ></ngx-shared-indirizzo>
+        <div formGroupName="condizioniTecnicoEconomiche">
+          <div class="col-md-12 p-3 border rounded width-90">
+            <div class="row">
+            <div class="col-md-12 pb-3">Condizioni Tecnico Economiche</div>
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-3">
+                  <label for="tipologiaOfferta" [ngClass]="{
+                      'has-error':
+                        informazioniFornituraForm.controls[
+                          'condizioniTecnicoEconomiche'
+                        ].get('tipologiaOfferta').invalid,
+                      'is-valid':
+                        informazioniFornituraForm.controls[
+                          'condizioniTecnicoEconomiche'
+                        ].get('tipologiaOfferta').valid
+                    }" class="form-label">Tipologia offerta *</label>
+                </div>
+                <div class="col-md-9">
+                  <div class="row ml-2">
+                    <div class="col-md-3 pl-4" *ngFor="let tipoOfferta of tipiOfferta;index as i">
+                      <input type="radio" formControlName="tipologiaOfferta"
+                        (change)="getListinis(tipoOfferta.cdTipoOfferta)" value="{{ tipoOfferta.cdTipoOfferta }}"
+                        class="form-check-input" id="tipologiaOfferta{{i}}"/>
+                      <label  for="tipologiaOfferta{{i}}" [ngClass]="{
+                          'has-error':
+                            informazioniFornituraForm.controls[
+                              'condizioniTecnicoEconomiche'
+                            ].get('tipologiaOfferta').invalid,
+                          'is-valid':
+                            informazioniFornituraForm.controls[
+                              'condizioniTecnicoEconomiche'
+                            ].get('tipologiaOfferta').valid
+                        }" class="form-check-label">{{ tipoOfferta.dsTipoOfferta }}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 pt-1 pb-1">
+              <div class="row">
+                <div class="col-md-3">
+                  <label for="listino" class="form-label" [ngClass]="{
+                      'has-error':
+                        informazioniFornituraForm.controls[
+                          'condizioniTecnicoEconomiche'
+                        ].get('listino').invalid,
+                      'is-valid':
+                        informazioniFornituraForm.controls[
+                          'condizioniTecnicoEconomiche'
+                        ].get('listino').valid
+                    }">
+                    Listino *
+                  </label>
+                </div>
+                <div class="col-md-6">
+                  <select type="number" formControlName="listino" class="form-select">
+                    <option value=""></option>
+                    <option *ngFor="let listino of listini" value="{{listino.id}}">
+                      {{ listino.tipologia.dsTipoOfferta }}
+                    </option>
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <div class="row">
+                    <div class="col-md-4 d-flex flex-row justify-content-around">
+                      <button class="btn p-0 m-0" type="button">
+                        <span class="fa fa-search text-primary"></span>
+                      </button>
+                      <button class="btn p-0 m-0" type="button">
+                        <i class="fa fa-times-circle text-danger"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+        <ngx-informazioni-aggiuntive
+        [fornitori]="fornitori" [tipiMercato]="tipiMercato"
+        [fornitori1]="fornitori1" [resellers]="resellers"
+        [infoClasses]="forCssClasses" [data]="dataIndirizzo"
+        [codiceContratto]="codiceContratto"
+        (sendInformationOnValidityChanges)="updateChanges($event)"
+        >
+        </ngx-informazioni-aggiuntive>
+      <div class="row">
+        <div class="col-md-3"></div>
+        <div class="p-3 col-md-9 d-flex justify-content-end">
+          <div class="row">
+            <div class="col-6">
+              <button class="btn btn-outline-dark" (click)="vaiIndietro()">
+                Indietro
+              </button>
+            </div>
+            <div class="col-6">
+              <button class="btn btn-primary pl-3 mt-xs-2 mt-sm-0 pr-3" type="submit">
+                Avanti
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

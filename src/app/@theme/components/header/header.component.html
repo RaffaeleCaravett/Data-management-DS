@@ -1,0 +1,46 @@
+<div class="d-flex text-white">
+  <div class="pt-3 w-100"><a (click)="toggleSidebar()" href="#" class="sidebar-toggle">
+    <nb-icon icon="menu-2-outline"></nb-icon>
+  </a>
+  <span data-bs-toggle="tooltip" data-bs-placement="top"
+       data-bs-custom-class="custom-tooltip"
+        title="Vai alla home"><a class="logo" href="#" (click)="navigateHome() " class="text-white">DM - <span>Data Management</span></a>
+  </span>
+      </div>
+  <div class="p-2 flex-shrink-1">
+    <ul class="d-flex">
+      <li (click)="navigateHome()">
+        <!-- <button mat-fab><span class="material-symbols-outlined">
+        home
+        </span></button> -->
+       <nb-icon icon="home-outline" class="text-white"></nb-icon>
+          <span class="text-white">Home</span>
+
+        </li>
+      <li (click)="navigateForniture()">
+        <nb-icon icon="clipboard-outline" class="text-white"></nb-icon>
+        <span class="text-white">Forniture</span>
+    </li>
+      <li (click)="navigateBollette()">
+        <nb-icon icon="folder-outline" class="text-white"></nb-icon>
+        <span class="text-white">Bollette</span>
+      </li>
+      <li>
+        <span data-bs-toggle="tooltip" data-bs-placement="top"
+    data-bs-custom-class="custom-tooltip"
+     title="Vai al profilo"><nb-actions size="small">
+
+    <nb-action class="user-action" *nbIsGranted="['view', 'user']">
+      <nb-user [nbContextMenu]="userMenu"
+               [onlyPicture]="userPictureOnly"
+               name="{{user.name}}"
+               picture="https://via.placeholder.com/50/4479e7/ffffff?Text=IMG"
+            >
+      </nb-user>
+    </nb-action>
+  </nb-actions></span></li>
+    </ul>
+
+
+</div>
+</div>

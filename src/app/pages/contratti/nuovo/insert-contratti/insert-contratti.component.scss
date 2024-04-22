@@ -1,0 +1,27 @@
+::ng-deep.form-check-input:checked {
+    background-color: rgb(1,1,58);
+    border-color: rgb(1,1,58)
+  }
+  ::ng-deep.bg-primary{
+    background-color:rgb(1,1,58);
+  }
+  ::ng-deep.btn-primary{
+    background-color:rgb(1,1,58);
+    border:1px solid rgb(1,1,58);
+    &:hover,
+  &:focus,
+  &:active{
+     background-color:rgb(1,1,58);
+    border:1px solid rgb(1,1,58);
+  }
+}
+::ng-deep.text-primary{
+    color:rgb(1,1,58)!important;
+  }
+  ::ng-deep.text-info{
+    color:rgb(1,1,58)!important;
+  }
+  ::ng-deep .form-control-check{
+
+      accent-color:rgb(1,1,58);
+    }

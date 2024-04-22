@@ -1,0 +1,14 @@
+version: 0.0
+os: linux
+files:
+  - source: /docker/dmf-docker-compose.yml
+    destination: /home/ec2-user/docker-compose
+hooks:
+  BeforeInstall:
+    - location: scripts/install_dependencies
+      timeout: 300
+      runas: root
+  AfterInstall:
+    - location: scripts/run_update_stack
+      timeout: 3000
+      runas: root

@@ -1,0 +1,297 @@
+<ng-container [formGroup]="form">
+    <div formGroupName="indirizzoResidenza" *ngIf="form.controls['indirizzoResidenza']">
+        <div class="col-md-12 border rounded bg-white p-3 width90">
+<div class="row">
+            <div class="col-md-12 bg-s bg-gradient p-2">
+                Residenza o sede legale
+            </div>
+            <div class="col-md-2 mt-2">
+                <label for="cdToponimo"
+                    [ngClass]="{'has-error': infoClasses&&infoClasses.toponimo==false&& infoClasses.submitted==true ||
+             infoClasses&&infoClasses.indirizzo==false&& infoClasses.submitted==true ,
+                'is-valid':infoClasses && infoClasses.toponimo==true && infoClasses.indirizzo==true && infoClasses.submitted==true }">Indirizzo*</label>
+            </div>
+            <div class="col-md-2 mt-2" *ngIf="toponimi">
+                <select (change)="setInfoValidityChanges($event)" type="text" formControlName="cdToponimo"
+                    class="form-select" [ngClass]="{'has-errors': infoClasses&&infoClasses.toponimo==false&&infoClasses.submitted==true ,
+            'its-valid':infoClasses&&infoClasses.toponimo==true&&infoClasses.submitted==true  }">
+                    <option value=""></option>
+                    <option value="{{toponimo.codiceToponimo}}" *ngFor="let toponimo of toponimi">
+                        {{toponimo.descrizioneToponimo}}</option>
+                </select>
+            </div>
+            <div class="col-md-4 mt-2">
+                <input (input)="setInfoValidityChanges($event)" type="text" formControlName="indirizzo"
+                    class="form-control" [ngClass]="{'has-errors': infoClasses&&infoClasses.indirizzo==false&&infoClasses.submitted==true,
+             'its-valid':infoClasses&&infoClasses.indirizzo==true&&infoClasses.submitted==true  }">
+            </div>
+            <div class="col-md-2 mt-2">
+                <label for="numeroCivico" [ngClass]="{'has-error': infoClasses&&infoClasses.numeroCivico==false&&infoClasses.submitted==true,
+            'is-valid':infoClasses&&infoClasses.numeroCivico==true&&infoClasses.submitted==true  }">N*</label>
+            </div>
+            <div class="col-md-2 mt-2">
+                <input (input)="setInfoValidityChanges($event)" type="text" formControlName="numeroCivico"
+                    class="form-control" [ngClass]="{'has-errors': infoClasses&&infoClasses.numeroCivico==false&&infoClasses.submitted==true,
+            'its-valid':infoClasses&&infoClasses.numeroCivico==true&&infoClasses.submitted==true  }">
+            </div>
+            <div class="col-md-2 mt-2">
+                <label for="cdProvincia" [ngClass]="{'has-error': infoClasses&&infoClasses.provincia==false&&infoClasses.submitted==true,
+            'is-valid':infoClasses&&infoClasses.provincia==true&&infoClasses.submitted==true  }">Provincia*</label>
+            </div>
+            <div class="col-md-2 mt-2">
+                <select type="text" formControlName="cdProvincia"
+                    (change)="visualizzaComuni1($event);setInfoValidityChanges($event)" class="form-select"
+                    *ngIf="provincie" [ngClass]="{'has-errors': infoClasses&&infoClasses.provincia==false&&infoClasses.submitted==true,
+                'its-valid':infoClasses&&infoClasses.provincia==true&&infoClasses.submitted==true  }">
+                    <option value=""></option>
+                    <option value="{{provincia.codiceProvincia}}" *ngFor="let provincia of provincie">
+                        {{provincia.descrizioneProvincia}}</option>
+                </select>
+            </div>
+            <div class="col-md-2 mt-2">
+                <label for="cdComune" [ngClass]="{'has-error': infoClasses&&infoClasses.comune==false&&infoClasses.submitted==true,
+                'is-valid':infoClasses&&infoClasses.comune==true&&infoClasses.submitted==true}">Comune*</label>
+            </div>
+            <div class="col-md-2 mt-2">
+                <select type="text" formControlName="cdComune" class="form-select"
+                    (change)="visualizzaCap($event);setInfoValidityChanges($event)" [ngClass]="{'has-errors': infoClasses&&infoClasses.comune==false&&infoClasses.submitted==true,
+            'its-valid':infoClasses&&infoClasses.comune==true&&infoClasses.submitted==true  }">
+                    <option value=""></option>
+                    <option value="{{comune.codiceComune}}" *ngFor="let comune of comuneElenco1">
+                        {{comune.nomeComune}}</option>
+                </select>
+            </div>
+            <div class="col-md-2 mt-2">
+                <label for="cap" [ngClass]="{'has-error': infoClasses&&infoClasses.cap==false&&infoClasses.submitted==true,
+                 'is-valid':infoClasses&&infoClasses.cap==true&&infoClasses.submitted==true  }">Cap*</label>
+            </div>
+            <div class="col-md-2 mt-2">
+                <input (input)="setInfoValidityChanges($event)" type="text" formControlName="cap" class="form-control"
+                    [ngClass]="{'has-errors': infoClasses&&infoClasses.cap==false&&infoClasses.submitted==true,
+            'its-valid':infoClasses&&infoClasses.cap==true&&infoClasses.submitted==true  }">
+            </div>
+            <div class="col-md-2 mt-2">
+                <label for="presso" [ngClass]="{'has-error': infoClasses&&infoClasses.presso==false&&infoClasses.submitted==true,
+                 'is-valid':infoClasses&&infoClasses.presso==true&&infoClasses.submitted==true  }">C/O</label>
+            </div>
+            <div class="col-md-2 mt-2">
+                <input (input)="setInfoValidityChanges($event)" type="text" formControlName="presso"
+                    class="form-control" [ngClass]="{'has-errors': infoClasses&&infoClasses.presso==false&&infoClasses.submitted==true,
+             'its-valid':infoClasses&&infoClasses.presso==true&&infoClasses.submitted==true  }">
+            </div>
+            <div class="col-md-2">
+                <label for="frazione" [ngClass]="{'has-error':infoClasses&&infoClasses.frazione==false&&infoClasses.submitted==true,
+                'is-valid':infoClasses&&infoClasses.frazione==true&&infoClasses.submitted==true }">Frazione</label>
+            </div>
+            <div class="col-md-4 mt-2">
+                <input (input)="setInfoValidityChanges($event)" type="text" formControlName="frazione"
+                    class="form-control" [ngClass]="{'has-errors':infoClasses&&infoClasses.frazione==false&&infoClasses.submitted==true,
+            'its-valid':infoClasses&&infoClasses.frazione==true&&infoClasses.submitted==true }">
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="col-md-12 border rounded bg-white p-3 width90" *ngIf="form.controls['coincide']">
+        <div class="row">
+        <div class="col-md-12 bg-s bg-gradient p-2">
+            Indirizzo Fatturazione
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="checkbox" (change)="coincideResidenza();setInfoValidityChanges($event)"
+                        formControlName="coincide" class="form-control-check" id="coincide"/><label for="coincide"
+                        class="pl-2 form-check-label"
+                        (click)="setInfoValidityChanges($event)" #coinc>Coincide con
+                        residenza</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 mt-2">
+            <label for="cdToponimo"
+                [ngClass]="{'has-error': infoClasses&&infoClasses.toponimo==false&& infoClasses.submitted==true ||
+         infoClasses&&infoClasses.indirizzo==false&& infoClasses.submitted==true ,
+            'is-valid':infoClasses && infoClasses.toponimo==true && infoClasses.indirizzo==true && infoClasses.submitted==true }">Indirizzo*</label>
+        </div>
+        <div class="col-md-2 mt-2" *ngIf="toponimi">
+            <select (change)="setInfoValidityChanges($event)" type="text" formControlName="cdToponimo"
+                class="form-select" [ngClass]="{'has-errors': infoClasses&&infoClasses.toponimo==false&&infoClasses.submitted==true ,
+         'its-valid':infoClasses&&infoClasses.toponimo==true&&infoClasses.submitted==true  }">
+                <option value=""></option>
+                <option value="{{toponimo.codiceToponimo}}" *ngFor="let toponimo of toponimi">
+                    {{toponimo.descrizioneToponimo}}</option>
+            </select>
+        </div>
+        <div class="col-md-4 mt-2">
+            <input (input)="setInfoValidityChanges($event)" type="text" formControlName="indirizzo" class="form-control"
+                [ngClass]="{'has-errors': infoClasses&&infoClasses.indirizzo==false&&infoClasses.submitted==true,
+        'its-valid':infoClasses&&infoClasses.indirizzo==true&&infoClasses.submitted==true  }">
+        </div>
+        <div class="col-md-2 mt-2">
+            <label for="numeroCivico" [ngClass]="{'has-error': infoClasses&&infoClasses.numeroCivico==false&&infoClasses.submitted==true,
+        'is-valid':infoClasses&&infoClasses.numeroCivico==true&&infoClasses.submitted==true  }">N*</label>
+        </div>
+        <div class="col-md-2 mt-2">
+            <input (input)="setInfoValidityChanges($event)" type="text" formControlName="numeroCivico"
+                class="form-control" [ngClass]="{'has-errors': infoClasses&&infoClasses.numeroCivico==false&&infoClasses.submitted==true,
+        'its-valid':infoClasses&&infoClasses.numeroCivico==true&&infoClasses.submitted==true  }" [readOnly]="readO">
+        </div>
+        <div class="col-md-2 mt-2">
+            <label for="cdProvincia" [ngClass]="{'has-error': infoClasses&&infoClasses.provincia==false&&infoClasses.submitted==true,
+        'is-valid':infoClasses&&infoClasses.provincia==true&&infoClasses.submitted==true  }">Provincia*</label>
+        </div>
+        <div class="col-md-2 mt-2">
+            <select type="text" formControlName="cdProvincia"
+                (change)="visualizzaComuni1($event);setInfoValidityChanges($event)" class="form-select"
+                *ngIf="provincie" [ngClass]="{'has-errors': infoClasses&&infoClasses.provincia==false&&infoClasses.submitted==true,
+            'its-valid':infoClasses&&infoClasses.provincia==true&&infoClasses.submitted==true  }">
+                <option value=""></option>
+                <option value="{{provincia.codiceProvincia}}" *ngFor="let provincia of provincie">
+                    {{provincia.descrizioneProvincia}}</option>
+            </select>
+        </div>
+        <div class="col-md-2 mt-2">
+            <label for="cdComune" [ngClass]="{'has-error': infoClasses&&infoClasses.comune==false&&infoClasses.submitted==true,
+            'is-valid':infoClasses&&infoClasses.comune==true&&infoClasses.submitted==true}">Comune*</label>
+        </div>
+        <div class="col-md-2 mt-2">
+            <select type="text" formControlName="cdComune" class="form-select"
+                (change)="visualizzaCap($event);setInfoValidityChanges($event)" [ngClass]="{'has-errors': infoClasses&&infoClasses.comune==false&&infoClasses.submitted==true,
+        'its-valid':infoClasses&&infoClasses.comune==true&&infoClasses.submitted==true  }">
+                <option value=""></option>
+                <option value="{{comune.codiceComune}}" *ngFor="let comune of comuneElenco1">
+                    {{comune.nomeComune}}</option>
+            </select>
+        </div>
+        <div class="col-md-2 mt-2">
+            <label for="cap" [ngClass]="{'has-error': infoClasses&&infoClasses.cap==false&&infoClasses.submitted==true,
+             'is-valid':infoClasses&&infoClasses.cap==true&&infoClasses.submitted==true  }">Cap*</label>
+        </div>
+        <div class="col-md-2 mt-2">
+            <input (input)="setInfoValidityChanges($event)" type="text" formControlName="cap" class="form-control"
+                [ngClass]="{'has-errors': infoClasses&&infoClasses.cap==false&&infoClasses.submitted==true,
+         'its-valid':infoClasses&&infoClasses.cap==true&&infoClasses.submitted==true  }" [readOnly]="readO">
+        </div>
+        <div class="col-md-2 mt-2">
+            <label for="presso" [ngClass]="{'has-error': infoClasses&&infoClasses.presso==false&&infoClasses.submitted==true,
+             'is-valid':infoClasses&&infoClasses.presso==true&&infoClasses.submitted==true  }">C/O</label>
+        </div>
+        <div class="col-md-2 mt-2">
+            <input (input)="setInfoValidityChanges($event)" type="text" formControlName="presso" class="form-control"
+                [ngClass]="{'has-errors': infoClasses&&infoClasses.presso==false&&infoClasses.submitted==true,
+        'its-valid':infoClasses&&infoClasses.presso==true&&infoClasses.submitted==true  }" [readOnly]="readO">
+        </div>
+        <div class="col-md-2">
+            <label for="frazione" [ngClass]="{'has-error':infoClasses&&infoClasses.frazione==false&&infoClasses.submitted==true,
+            'is-valid':infoClasses&&infoClasses.frazione==true&&infoClasses.submitted==true }">Frazione</label>
+        </div>
+        <div class="col-md-4 mt-2">
+            <input (input)="setInfoValidityChanges($event)" type="text" formControlName="frazione" class="form-control"
+                [ngClass]="{'has-errors':infoClasses&&infoClasses.frazione==false&&infoClasses.submitted==true,
+         'its-valid':infoClasses&&infoClasses.frazione==true&&infoClasses.submitted==true }" [readOnly]="readO">
+        </div>
+    </div>
+    </div>
+    <div class="col-md-12 border rounded bg-white p-3 width90" formGroupName="indirizzoFornitura"
+        *ngIf="form.controls['indirizzoFornitura']">
+<div class="row">
+        <div class="col-md-12 bg-s bg-gradient p-2">
+            Indirizzo Fornitura
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-4">
+                    <input type="checkbox" (change)="coincideResidenza();setInfoValidityChanges($event)"
+                        formControlName="coincide" class="form-control-check" id="coincide"/><label for="coincide"
+                        class="pl-2 form-check-label"
+                        (click)="setInfoValidityChanges($event)" #coinc>Coincide con
+                        residenza</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2 mt-2">
+            <label for="cdToponimo"
+                [ngClass]="{'has-error': infoClasses&&infoClasses.toponimo==false&& infoClasses.submitted==true ||
+         infoClasses&&infoClasses.indirizzo==false&& infoClasses.submitted==true ,
+            'is-valid':infoClasses && infoClasses.toponimo==true && infoClasses.indirizzo==true && infoClasses.submitted==true ||form.controls['indirizzoFornitura'].get('cdToponimo').disabled&&infoClasses.submitted==true}">Indirizzo*</label>
+        </div>
+        <div class="col-md-2 mt-2" *ngIf="toponimi">
+            <select (input)="setInfoValidityChanges($event)" type="text" formControlName="cdToponimo"
+                class="form-select" [ngClass]="{'has-errors': infoClasses&&infoClasses.toponimo==false&&infoClasses.submitted==true ,
+         'its-valid':infoClasses&&infoClasses.toponimo==true&&infoClasses.submitted==true  ||form.controls['indirizzoFornitura'].get('cdToponimo').disabled&&infoClasses.submitted==true}">
+                <option value=""></option>
+                <option value="{{toponimo.codiceToponimo}}" *ngFor="let toponimo of toponimi">
+                    {{toponimo.descrizioneToponimo}}</option>
+            </select>
+        </div>
+        <div class="col-md-4 mt-2">
+            <input (input)="setInfoValidityChanges($event)" type="text" formControlName="indirizzo" class="form-control"
+                [ngClass]="{'has-errors': infoClasses&&infoClasses.indirizzo==false&&infoClasses.submitted==true,
+        'its-valid':infoClasses&&infoClasses.indirizzo==true&&infoClasses.submitted==true  || form.controls['indirizzoFornitura'].get('cdToponimo').disabled&&infoClasses.submitted==true}">
+        </div>
+        <div class="col-md-2 mt-2">
+            <label for="numeroCivico" [ngClass]="{'has-error': infoClasses&&infoClasses.numeroCivico==false&&infoClasses.submitted==true,
+        'is-valid':infoClasses&&infoClasses.numeroCivico==true&&infoClasses.submitted==true  ||form.controls['indirizzoFornitura'].get('cdToponimo').disabled&&infoClasses.submitted==true}">N*</label>
+        </div>
+        <div class="col-md-2 mt-2">
+            <input (input)="setInfoValidityChanges($event)" type="text" formControlName="numeroCivico"
+                class="form-control" [ngClass]="{'has-errors': infoClasses&&infoClasses.numeroCivico==false&&infoClasses.submitted==true,
+        'its-valid':infoClasses&&infoClasses.numeroCivico==true&&infoClasses.submitted==true|| form.controls['indirizzoFornitura'].get('cdToponimo').disabled&&infoClasses.submitted==true}" [readOnly]="readO">
+        </div>
+        <div class="col-md-2 mt-2">
+            <label for="cdProvincia" [ngClass]="{'has-error': infoClasses&&infoClasses.provincia==false&&infoClasses.submitted==true,
+        'is-valid':infoClasses&&infoClasses.provincia==true&&infoClasses.submitted==true  ||form.controls['indirizzoFornitura'].get('cdToponimo').disabled&&infoClasses.submitted==true}">Provincia*</label>
+        </div>
+        <div class="col-md-2 mt-2">
+            <select type="text" formControlName="cdProvincia"
+                (change)="visualizzaComuni1($event);setInfoValidityChanges($event)" class="form-select"
+                *ngIf="provincie" [ngClass]="{'has-errors': infoClasses&&infoClasses.provincia==false&&infoClasses.submitted==true,
+            'its-valid':infoClasses&&infoClasses.provincia==true&&infoClasses.submitted==true  ||form.controls['indirizzoFornitura'].get('cdToponimo').disabled&&infoClasses.submitted==true}">
+                <option value=""></option>
+                <option value="{{provincia.codiceProvincia}}" *ngFor="let provincia of provincie">
+                    {{provincia.descrizioneProvincia}}</option>
+            </select>
+        </div>
+        <div class="col-md-2 mt-2">
+            <label for="cdComune" [ngClass]="{'has-error': infoClasses&&infoClasses.comune==false&&infoClasses.submitted==true,
+            'is-valid':infoClasses&&infoClasses.comune==true&&infoClasses.submitted==true||form.controls['indirizzoFornitura'].get('cdToponimo').disabled&&infoClasses.submitted==true}">Comune*</label>
+        </div>
+        <div class="col-md-2 mt-2">
+            <select type="text" formControlName="cdComune" class="form-select"
+                (change)="visualizzaCap($event);setInfoValidityChanges($event)" [ngClass]="{'has-errors': infoClasses&&infoClasses.comune==false&&infoClasses.submitted==true,
+        'its-valid':infoClasses&&infoClasses.comune==true&&infoClasses.submitted==true  ||form.controls['indirizzoFornitura'].get('cdToponimo').disabled&&infoClasses.submitted==true}">
+                <option value=""></option>
+                <option value="{{comune.codiceComune}}" *ngFor="let comune of comuneElenco1">
+                    {{comune.nomeComune}}</option>
+            </select>
+        </div>
+        <div class="col-md-2 mt-2">
+            <label for="cap" [ngClass]="{'has-error': infoClasses&&infoClasses.cap==false&&infoClasses.submitted==true,
+             'is-valid':infoClasses&&infoClasses.cap==true&&infoClasses.submitted==true  ||form.controls['indirizzoFornitura'].get('cdToponimo').disabled&&infoClasses.submitted==true}">Cap*</label>
+        </div>
+        <div class="col-md-2 mt-2">
+            <input (input)="setInfoValidityChanges($event)" type="text" formControlName="cap" class="form-control"
+                [ngClass]="{'has-errors': infoClasses&&infoClasses.cap==false&&infoClasses.submitted==true,
+         'its-valid':infoClasses&&infoClasses.cap==true&&infoClasses.submitted==true  ||form.controls['indirizzoFornitura'].get('cdToponimo').disabled&&infoClasses.submitted==true}" [readOnly]="readO">
+        </div>
+        <div class="col-md-2 mt-2">
+            <label for="presso" [ngClass]="{'has-error': infoClasses&&infoClasses.presso==false&&infoClasses.submitted==true,
+             'is-valid':infoClasses&&infoClasses.presso==true&&infoClasses.submitted==true  ||form.controls['indirizzoFornitura'].get('cdToponimo').disabled&&infoClasses.submitted==true}">C/O</label>
+        </div>
+        <div class="col-md-2 mt-2">
+            <input (input)="setInfoValidityChanges($event)" type="text" formControlName="presso" class="form-control"
+                [ngClass]="{'has-errors': infoClasses&&infoClasses.presso==false&&infoClasses.submitted==true,
+        'its-valid':infoClasses&&infoClasses.presso==true&&infoClasses.submitted==true  ||form.controls['indirizzoFornitura'].get('cdToponimo').disabled&&infoClasses.submitted==true}" [readOnly]="readO">
+        </div>
+        <div class="col-md-2">
+            <label for="frazione" [ngClass]="{'has-error':infoClasses&&infoClasses.frazione==false&&infoClasses.submitted==true,
+            'is-valid':infoClasses&&infoClasses.frazione==true&&infoClasses.submitted==true ||form.controls['indirizzoFornitura'].get('cdToponimo').disabled&&infoClasses.submitted==true}">Frazione</label>
+        </div>
+        <div class="col-md-4 mt-2">
+            <input (input)="setInfoValidityChanges($event)" type="text" formControlName="frazione" class="form-control"
+                [ngClass]="{'has-errors':infoClasses&&infoClasses.frazione==false&&infoClasses.submitted==true,
+         'its-valid':infoClasses&&infoClasses.frazione==true&&infoClasses.submitted==true ||form.controls['indirizzoFornitura'].get('cdToponimo').disabled&&infoClasses.submitted==true}" [readOnly]="readO">
+        </div>
+    </div>
+    </div>
+</ng-container>

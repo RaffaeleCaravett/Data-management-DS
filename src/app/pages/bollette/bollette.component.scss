@@ -1,0 +1,105 @@
+h1{
+ .text-info{
+  text-shadow: 1px 1px gray;
+}
+}
+.text-info{
+  font-weight: bold;
+}
+
+.gian{
+    background: #050c0c;
+    width: 550px;
+    border: 1px solid #000000;
+    margin-top:0px;
+    background-color: white;
+    height: 60px;
+
+}
+
+:host::ng-deep{
+    .ngx-datatable .datatable-header .datatable-header-cell {
+        border: 1px solid #ccc;
+        border: 1px solid #ccc;
+        font-family: 'RobotoDraft', 'Roboto', 'Helvetica Neue, Helvetica, Arial', sans-serif;
+        text-align: center;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 2rem;
+        letter-spacing: 0.01rem;
+        color: #212121;
+        background-color: #fafafa;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        margin: 0;
+        position: relative
+    }
+    ng2-st-tbody-custom{
+     display: inline-flex;
+    position:relative;
+    top: 15px;
+    right: 5px;
+    }
+    a {
+        color: grey;
+        text-decoration: none
+    }
+
+.ngx-datatable .datatable-body .datatable-body-cell {
+    border: 1px solid #ccc;
+    border: 1px solid #ccc;
+    font-family: 'RobotoDraft', 'Roboto', 'Helvetica Neue, Helvetica, Arial', sans-serif;
+    text-align: center;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 2rem;
+    letter-spacing: 0.01rem;
+    color: #212121;
+    background-color: #fafafa;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    margin: 0;
+    position: relative
+
+
+a {
+    color: grey;
+    text-decoration: none;
+}
+}
+}
+
+.hover:hover{
+color:red
+}
+.mele{
+  text-align: center;
+}
+#romario{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.maradona{
+    border:0px;
+
+}
+table {
+    width: 100%;
+    background-color: white;
+  }
+  ::ng-deep .ng2-smart-actions {
+text-align: center;
+
+  }
+ .bt{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  }
+  ::ng-deep.nb-theme-default ng2-smart-table table tr td:last-child {
+    color:green;
+    font-weight:bolder
+} 

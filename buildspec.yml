@@ -1,0 +1,31 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - n 14.18.3
+      - yum install -y jq
+
+
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo version:$DMF_VERSION
+      - "npm i"
+      - npm run build:coll
+      - echo Building the Docker image...
+      - docker build -t data-managment-fe .
+      - docker tag data-managment-fe:latest 361207463645.dkr.ecr.eu-south-1.amazonaws.com/data-managment-fe:$DMF_VERSION
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker image...
+      - docker push 361207463645.dkr.ecr.eu-south-1.amazonaws.com/data-managment-fe:$DMF_VERSION
+      - echo push docker image succes
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region eu-south-1 | docker login --username AWS --password-stdin 361207463645.dkr.ecr.eu-south-1.amazonaws.com
+      - echo version:$DMF_VERSION
+      - export DMF_VERSION=$(cat package.json| jq '.version'  | sed 's/\"//g' )
+      - echo version2:$DMF_VERSION

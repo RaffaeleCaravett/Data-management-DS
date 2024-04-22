@@ -1,0 +1,11 @@
+{
+  "/vteOauth2/huball/api/v1/*": {
+    "target": "https://pure-cove-04003.herokuapp.com",
+    "secure": true,
+    "pathRewrite": {
+      "/vteOauth2/huball/api/v1/": "/"
+    },
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

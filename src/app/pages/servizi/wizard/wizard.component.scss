@@ -1,0 +1,42 @@
+.rgb {
+   background: rgb(1, 1, 58);
+   color: white
+}
+
+.col-md-3 {
+   text-align: left;
+
+   p {
+      margin-bottom: 30%
+   }
+
+   .col-md-12 {
+      font-size: 24px;
+      padding: 5%;
+   }
+
+   .col-md-12:hover {
+      color: lightgray;
+      border-bottom: 1px solid lightgray;
+   }
+}
+
+.col-md-9 {
+   border-left: 1px solid lightgrey;
+
+}
+
+@media screen and (max-width:839px) {
+   .col-md-9 {
+      border-left: none;
+   }
+}
+
+.form-control:focus {
+   border-color: rgb(1, 1, 58);
+   box-shadow: 0 0 0 0.2rem rgb(1, 1, 58);
+ }
+ .form-select:focus {
+   border-color: rgb(1, 1, 58);
+   box-shadow: 0 0 0 0.2rem  rgb(1, 1, 58);
+ }

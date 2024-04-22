@@ -1,0 +1,250 @@
+<ng-container [formGroup]="form">
+    <div formGroupName="informazioniAggiuntive">
+        <div class="col-md-12 row border p-3 rounded overflow-auto width90">
+            <div class="col-md-12 p-0 m-0 pb-3">Informazioni aggiuntive</div>
+            <div class="col-md-6 p-1">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="mercatoProvenienza" class="form-label" [ngClass]="{
+                            'has-error':
+                            infoClasses&&infoClasses.mercatoProvenienza==false&&infoClasses.submitted==true,
+                            'is-valid':
+                            infoClasses&&infoClasses.mercatoProvenienza==true&&infoClasses.submitted==true
+                                    }">
+                            Mercato Provenienza*
+                        </label>
+                    </div>
+                    <div class="col-md-9">
+                        <select type="number" name="" formControlName="mercatoProvenienza" id="" class="form-select" (change)="setInfoValidityChanges($event)"
+                        [ngClass]="{
+                          'has-errors':
+                          infoClasses&&infoClasses.mercatoProvenienza==false&&infoClasses.submitted==true,
+                          'irs-valid':
+                          infoClasses&&infoClasses.mercatoProvenienza==true&&infoClasses.submitted==true
+                                  }"
+                        >
+                            <option value=""></option>
+                            <option *ngFor="let tipoMercato of tipiMercato" value="{{ tipoMercato.idTipoMercato }}">
+                                {{ tipoMercato.descrizione }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 p-1">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="tempiRecessoMesi" class="form-label" [ngClass]="{
+                            'has-error':
+                            infoClasses&&infoClasses.tempiRecessoMesi==false&&infoClasses.submitted==true,
+                            'is-valid':
+                            infoClasses&&infoClasses.tempiRecessoMesi==true&&infoClasses.submitted==true
+                                    }">
+                            Tempi Recesso (mesi)*
+                        </label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="number" formControlName="tempiRecessoMesi" class="form-control" (input)="setInfoValidityChanges($event)"
+                        [ngClass]="{
+                          'has-errors':
+                          infoClasses&&infoClasses.tempiRecessoMesi==false&&infoClasses.submitted==true,
+                          'its-valid':
+                          infoClasses&&infoClasses.tempiRecessoMesi==true&&infoClasses.submitted==true
+                                  }"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 p-1">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="fornitoreUscente1" class="form-label" [ngClass]="{
+                            'has-error':
+                            infoClasses&&infoClasses.fornitoreUscente1==false&&infoClasses.submitted==true,
+                            'is-valid':
+                            infoClasses&&infoClasses.fornitoreUscente1==true&&infoClasses.submitted==true
+                                    }">
+                            Fornitore uscente 1*
+                        </label>
+                    </div>
+                    <div class="col-md-9">
+                        <select type="number" name="" id="" formControlName="fornitoreUscente1" class="form-select" (change)="setInfoValidityChanges($event)"
+                        [ngClass]="{
+                          'has-errors':
+                          infoClasses&&infoClasses.fornitoreUscente1==false&&infoClasses.submitted==true,
+                          'its-valid':
+                          infoClasses&&infoClasses.fornitoreUscente1==true&&infoClasses.submitted==true
+                                  }">
+                            <option value=""></option>
+                            <option *ngFor="let fornitore of fornitori" value="{{ fornitore.idFornitore }}">
+                                {{ fornitore.nome }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 p-1">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="fornitoreUscente2" class="form-label" [ngClass]="{
+                            'has-error':
+                            infoClasses&&infoClasses.fornitoreUscente2==false&&infoClasses.submitted==true,
+                            'is-valid':
+                            infoClasses&&infoClasses.fornitoreUscente2==true&&infoClasses.submitted==true
+                                    }">
+                            Fornitore uscente 2
+                        </label>
+                    </div>
+                    <div class="col-md-9">
+                        <select type="number" name="" id="" formControlName="fornitoreUscente2" class="form-select" (change)="setInfoValidityChanges($event)"
+                        [ngClass]="{
+                          'has-errors':
+                          infoClasses&&infoClasses.fornitoreUscente2==false&&infoClasses.submitted==true,
+                          'its-valid':
+                          infoClasses&&infoClasses.fornitoreUscente2==true&&infoClasses.submitted==true
+                                  }">
+                            <option value=""></option>
+                            <option *ngFor="let fornitore of fornitori1" value="{{ fornitore.idFornitore }}">
+                                {{ fornitore.nome }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 p-1">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="dataInizioPrevista" class="form-label" [ngClass]="{
+                            'has-error':
+                            infoClasses&&infoClasses.dataInizioPrevista==false&&infoClasses.submitted==true,
+                            'is-valid':
+                            infoClasses&&infoClasses.dataInizioPrevista==true&&infoClasses.submitted==true
+                                    }">
+                            Data inizio prevista*
+                        </label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="date" formControlName="dataInizioPrevista" min="{{todayDate | date:'yyyy-MM-dd'}}"
+                            class="form-control" (input)="setInfoValidityChanges($event)"
+                            [ngClass]="{
+                              'has-errors':
+                              infoClasses&&infoClasses.dataInizioPrevista==false&&infoClasses.submitted==true,
+                              'its-valid':
+                              infoClasses&&infoClasses.dataInizioPrevista==true&&infoClasses.submitted==true
+                                      }"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 p-1">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label (click)="setInfoValidityChanges($event)" for="calcoloProvvigioni" class="form-check-label"
+                            [ngClass]="{
+                                'has-error':
+                                infoClasses&&infoClasses.calcoloProvvigioni==false&&infoClasses.submitted==true,
+                                'is-valid':
+                                infoClasses&&infoClasses.calcoloProvvigioni==true&&infoClasses.submitted==true
+                                        }">Calcolo Provvigioni*</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="checkbox" value="true" formControlName="calcoloProvvigioni" id="calcoloProvvigioni"
+                            class="form-control-check" (input)="setInfoValidityChanges($event)"
+                            [ngClass]="{
+                              'has-errors':
+                              infoClasses&&infoClasses.calcoloProvvigioni==false&&infoClasses.submitted==true,
+                              'its-valid':
+                              infoClasses&&infoClasses.calcoloProvvigioni==true&&infoClasses.submitted==true
+                                      }"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 p-1">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label (click)="setInfoValidityChanges($event)" for="switchDistributore" class="form-check-label"
+                            [ngClass]="{
+                                'has-error':
+                                infoClasses&&infoClasses.switchDistributore==false&&infoClasses.submitted==true,
+                                'is-valid':
+                                infoClasses&&infoClasses.switchDistributore==true&&infoClasses.submitted==true
+                                        }">Switch distributore</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="checkbox" id="switchDistributore" value="true" formControlName="switchDistributore"
+                            class="form-control-check" (input)="setInfoValidityChanges($event)"
+                            [ngClass]="{
+                              'has-errors':
+                              infoClasses&&infoClasses.switchDistributore==false&&infoClasses.submitted==true,
+                              'its-valid':
+                              infoClasses&&infoClasses.switchDistributore==true&&infoClasses.submitted==true
+                                      }"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 p-1">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="resellerSwitch" class="form-label" [ngClass]="{
+                            'has-error':
+                            infoClasses&&infoClasses.resellerSwitch==false&&infoClasses.submitted==true,
+                            'is-valid':
+                            infoClasses&&infoClasses.resellerSwitch==true&&infoClasses.submitted==true
+                                    }">
+                            reseller switch *
+                        </label>
+                    </div>
+                    <div class="col-md-9">
+                        <select type="number" name="" id="" formControlName="resellerSwitch" class="form-select" (change)="setInfoValidityChanges($event)" [ngClass]="{
+                          'has-errors':
+                          infoClasses&&infoClasses.resellerSwitch==false&&infoClasses.submitted==true,
+                          'its-valid':
+                          infoClasses&&infoClasses.resellerSwitch==true&&infoClasses.submitted==true
+                                  }">
+                            <option value=""></option>
+                            <option *ngFor="let reseller of resellers" value="{{ reseller.id }}">
+                                {{ reseller.descrizione }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 p-1">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="ultimaBolletta" class="form-label" [ngClass]="{
+                'has-error':
+                infoClasses&&infoClasses.ultimaBolletta==false&&infoClasses.submitted==true,
+                'is-valid':
+                infoClasses&&infoClasses.ultimaBolletta==true&&infoClasses.submitted==true
+                        }">                Ultima Bolletta*
+                        </label>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="file" accept="application/pdf" formControlName="ultimaBolletta"
+                            class="form-control" (change)="file($event)" (input)="setInfoValidityChanges($event)" [ngClass]="{
+                              'has-errors':
+                              infoClasses&&infoClasses.ultimaBolletta==false&&infoClasses.submitted==true,
+                              'its-valid':
+                              infoClasses&&infoClasses.ultimaBolletta==true&&infoClasses.submitted==true
+                                      }"/>
+                    </div>
+                    <div class="col-md-1 d-flex flex-row justify-content-around">
+                        <button class="btn" type="button">
+                            <span class="fa fa-download text-primary"></span>
+                        </button>
+                        <button class="btn" type="button" (click)="pdfSrc0='';form.controls[
+            'informazioniAggiuntive'
+          ].get('ultimaBolletta').setValue('')">
+                            <span class="fa fa-times-circle text-danger"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <pdf-viewer *ngIf="pdfSrc0" #pdf [src]="pdfSrc0" [render-text]="true" [original-size]="false"
+                            style="width:70%; height:500px; padding:5%"></pdf-viewer>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

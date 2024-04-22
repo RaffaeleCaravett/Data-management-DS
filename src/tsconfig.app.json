@@ -1,0 +1,21 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "baseUrl": "src",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "files": [
+    "main.ts",
+    "polyfills.ts"
+  ],
+  "paths": {
+    "@gen/models/*": ["./app/_api/gen/models/*"],
+    "@gen/services/*": ["./app/_api/gen/services/*"],
+    "@packageJson": ["../package.json"]
+  },
+  "include": [
+    "**/*.d.ts"
+  ]
+}

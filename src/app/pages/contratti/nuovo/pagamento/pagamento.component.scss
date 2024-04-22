@@ -1,0 +1,25 @@
+.bg-s{
+  background: linear-gradient(#fff, #faf9f6);
+}
+form.ng-submitted{
+  input.ng-invalid,
+select.ng-invalid{
+  border: 1px solid red
+}
+input.ng-valid,
+select.ng-valid{
+  border:1px solid green
+}
+
+.has-error{
+  color:red
+}
+.is-valid{
+  color:green
+}
+}
+.width-90{
+  width:97%;
+  margin:auto;
+  margin-top: 1%;
+}

@@ -1,0 +1,39 @@
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    border-radius: 0.7rem;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+#sel48257{
+    display: inline!important;
+}
+::-webkit-scrollbar {
+
+    width: 0; /* Remove scrollbar space */
+   height: 10px;
+    background: transparent; /* Optional: just make scrollbar invisible */
+ }
+
+ ::-webkit-scrollbar-thumb {
+    background: #0055ff;
+    border-radius: 1rem;
+ }
+ ::ng-deep.nb-theme-default .text-danger {
+       display: none;
+}
+.width-90{
+    width: 97%;
+}
+::ng-deep.fa-times:before{
+        content: "\f00d";
+        color:red
+}
+.red{
+    color:red
+}
+::ng-deep pdf-viewer{
+  width:90%;
+  height:500px
+}

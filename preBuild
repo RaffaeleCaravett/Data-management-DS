@@ -1,0 +1,4 @@
+#!/bin/bash 
+echo "start check version"
+sudo export DMF_VERSION=$(cat package.json| jq '.version')
+echo "VERSION: $DMF_VERSION"

@@ -1,0 +1,127 @@
+
+<ng-container class="text-center">
+
+  <div class="row" >
+
+    <div class="border col-md-7 p-0 pb-1 m-2 shadow text-center bg-white bord rounded-3" >
+      <h2 class="text-white bg-personal p-3 rounded-top">
+        <i class="fa fa-chart-line"></i> Grafico consumi</h2>
+        <div echarts [options]="options" *ngIf="consumi" class="echart" ></div>
+      </div>
+
+
+  <div class="col-md-4 p-0 m-2 text-center bg-white border  shadow rounded-3" >
+    <span data-bs-toggle="tooltip" data-bs-placement="top"
+    data-bs-custom-class="custom-tooltip"
+     title="Tabella utenze con matricola"
+     >
+     <h2 class="text-white bg-personal p-3 rounded-top">
+      <i class="fa fa-list"></i> Elenco utenze</h2>
+</span>
+<div class="p-2">
+  <div *ngIf="letturaMessaggio" class="overflow-auto oa">
+<div class="bt">
+  <table mat-table  [dataSource]="dataSource1" class="m-auto" >
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="matricola">
+    <th mat-header-cell *matHeaderCellDef ><i class="material-icons">manage_search</i> Matricola</th>
+    <td mat-cell *matCellDef="let element;index as i"> {{element.message}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="dataScadenza">
+    <th mat-header-cell *matHeaderCellDef ><i class="material-icons">calendar_month</i> Data scadenza</th>
+    <td mat-cell *matCellDef="let element;index as i"><i class="material-icons text-danger">edit_calendar</i> {{element.dataScadenza | date:'dd/MM/YYYY'}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="prezzo">
+    <th mat-header-cell *matHeaderCellDef ><i class="material-icons">euro</i> Prezzo</th>
+    <td mat-cell *matCellDef="let element;index as i" class="text-success"> {{element.prezzo | currency}} </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+  <tr mat-row  *matRowDef="let row; columns: displayedColumns1;"></tr>
+</table>
+</div>
+
+</div>
+<div class="">
+  <div class=""><mat-paginator #MatPag1 class="mat1"  showFirstLastButtons></mat-paginator></div>
+</div>
+</div>
+
+
+</div>
+</div>
+<div class="row">
+  <div class="border col-md-7 p-0 m-2 shadow text-center bg-white bord rounded-3 overflow-auto"> <span data-bs-toggle="tooltip" data-bs-placement="top"
+    data-bs-custom-class="custom-tooltip"
+     title="Tabella delle fatture insolute con paginazione">
+     <h2 class="text-white bg-personal p-3 rounded-top">
+      <i class="fa fa-credit-card"></i> Fatture insolute</h2>
+ </span>
+ <div class="p-2">
+
+    <mat-form-field>
+     <input (keyup)="applyFilter($event.target.value)" matInput placeholder="Filtra">
+   </mat-form-field>
+<div class="">
+  <mat-table [dataSource]="dataSource" matSort >
+<ng-container matColumnDef="id">
+ <mat-header-cell mat-sort-header  *matHeaderCellDef class="primary">
+   <i class="material-icons">person</i> Id
+ </mat-header-cell>
+ <mat-cell *matCellDef="let element">{{element.id}}</mat-cell>
+</ng-container>
+
+<ng-container matColumnDef="numero">
+ <mat-header-cell mat-sort-header *matHeaderCellDef class="primary">
+  <i class="material-icons">numbers</i> Numero
+ </mat-header-cell>
+ <mat-cell *matCellDef="let element">{{element.numero}}</mat-cell>
+</ng-container>
+
+<ng-container matColumnDef="dataEmissione">
+ <mat-header-cell mat-sort-header *matHeaderCellDef class="primary">
+  <i class="material-icons">calendar_month</i> Data emissione
+ </mat-header-cell>
+ <mat-cell *matCellDef="let element"><i class="material-icons text-primary">edit_calendar</i> {{element.dataEmissione}}</mat-cell>
+</ng-container>
+
+<ng-container matColumnDef="dataScadenza">
+ <mat-header-cell mat-sort-header *matHeaderCellDef class="primary">
+  <i class="material-icons">calendar_month</i> Data Scadenza
+ </mat-header-cell>
+ <mat-cell *matCellDef="let element"><i class="material-icons text-primary">edit_calendar</i> {{element.dataScadenza}}</mat-cell>
+</ng-container>
+
+<ng-container matColumnDef="daPagare">
+ <mat-header-cell mat-sort-header *matHeaderCellDef class="primary">
+  <i class="material-icons">euro</i> Da pagare
+ </mat-header-cell>
+ <mat-cell *matCellDef="let element"  class="text-success">{{element.daPagare | currency}}</mat-cell>
+</ng-container>
+
+<mat-header-row *matHeaderRowDef="displayedColumns"> </mat-header-row>
+<mat-row (click)="logData(row)" *matRowDef="let row; columns:displayedColumns"></mat-row>
+</mat-table>
+
+<mat-paginator #MatPag  class="mat2" showFirstLastButtons></mat-paginator>
+  </div>
+
+ </div>
+   </div>
+  <div class="col-md-4 p-0 pb-1 m-2 text-center bg-white border  shadow rounded-3 ">
+
+      <h2 class="text-white bg-personal p-3 rounded-top">
+        <i class="fa fa-chart-bar"></i> Grafico costi</h2>
+<div echarts [options]="options1" *ngIf="costi" class="echart"></div>
+
+  </div>
+</div>
+
+</ng-container>

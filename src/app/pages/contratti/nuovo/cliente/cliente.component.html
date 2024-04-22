@@ -1,0 +1,296 @@
+<div class="container bg-secondaryy">
+    <div class="row">
+        <form [formGroup]="cliente" class="w-100 bg-white m-2 needs-validation">
+            <div>
+                <div class="col-md-12 border rounded bg-white p-3 width-90">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label for="codiceContratto"
+                                        [ngClass]="{'has-error': cliente.controls.codiceContratto.invalid,'is-valid':cliente.controls.codiceContratto.valid }">Codice</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="text" formControlName="codiceContratto" class="form-control">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="dataStipula"
+                                        [ngClass]="{'has-error': cliente.controls.dataStipula.invalid,'is-valid':cliente.controls.dataStipula.valid}">Data
+                                        Stipula*</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="date" formControlName="dataStipula" class="form-control"
+                                        max="{{date | date:'yyyy-MM-dd'}}">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="luogoStipula"
+                                        [ngClass]="{'has-error': cliente.controls.luogoStipula.invalid,'is-valid':cliente.controls.luogoStipula.valid }">Luogo
+                                        Stipula*</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="text" formControlName="luogoStipula" class="form-control">
+                                </div>
+                                <div class="col-md-12 p-0 m-0  mt-2 row">
+                                    <div class="col-md-2">
+                                        <label for="tipoContratto"
+                                            [ngClass]="{'has-error': cliente.controls.cdTipoContratto.invalid,'is-valid':cliente.controls.cdTipoContratto.valid }">Tipo
+                                            Contratto*</label>
+                                    </div>
+                                    <div class="col-md-9 ml-3">
+                                        <div class="row">
+                                            <div class="col-md-2 form-check" *ngFor="let tipoContract of tipiContracts">
+                                                <input type="radio" formControlName="cdTipoContratto"
+                                                    id="cdTipoContratto" value="{{tipoContract.cdTipoContratto}}"
+                                                    class="form-check-input ms" name="cdTipoContratto"><label
+                                                    class="form-check-label"
+                                                    [ngClass]="{'has-error': cliente.controls.cdTipoCliente.invalid,'is-valid':cliente.controls.cdTipoCliente.valid }"
+                                                    for="cdTipoContratto">{{tipoContract.tipologia}}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 p-0 m-0 mt-2 row">
+                                    <div class="col-md-2"><label for="cdTipoCliente"
+                                            [ngClass]="{'has-error': cliente.controls.cdTipoCliente.invalid,'is-valid':cliente.controls.cdTipoCliente.valid }">TipoCliente*</label>
+                                    </div>
+                                    <div class="col-md-9 ml-3">
+                                        <div class="row">
+                                            <div class="col-md-2 form-check"
+                                                *ngFor="let tipoClientAbilitato of tipiClientsAbilitati;index as i">
+                                                <input type="radio" formControlName="cdTipoCliente"
+                                                    (change)="tipiClientsA()"
+                                                    value="{{tipoClientAbilitato.cdTipoCliente}}"
+                                                    class="form-check-input ms" name="cdTipoCliente"
+                                                    id="cdTipoCliente{{i}}"><label class="form-check-label"
+                                                    [ngClass]="{'has-error': cliente.controls.cdTipoCliente.invalid,'is-valid':cliente.controls.cdTipoCliente.valid }"
+                                                    for="cdTipoCliente{{i}}">{{tipoClientAbilitato.dsTipoCliente}}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div formGroupName="anagraficaDto">
+                <div class="col-md-12 border rounded bg-white p-3 width-90">
+                    <div class="row">
+                        <div class="col-md-12 pb-2">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="input-group mb-3 custom">
+                                        <input type="text" class="form-control" placeholder="RICERCA"
+                                            (input)="cleanFunction()" formControlName="ricerc" #ricerc>
+                                        <button class="btn btn-outline-secondary search" type="button" *ngIf="search"
+                                            id="button-addon2"
+                                            (click)="ricercaAnag(ricerc.value)"><mat-icon>search</mat-icon></button>
+                                        <button class="btn btn-danger delete-bg" type="button" *ngIf="!search"
+                                            id="button-addon2"
+                                            (click)="cleanField()"><mat-icon>delete</mat-icon></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="cliente.controls.cdTipoCliente.value==='DOM'" class="row">
+                            <div class="col-md-12 p-0 m-0 mt-2 row">
+                                <div class="col-md-12 p-0 m-0 mb-2 row">
+                                    <div class="col-md-2">
+                                        <label for="codiceFiscale"
+                                            [ngClass]="{'has-error': cliente.controls['anagraficaDto'].get('codiceFiscale').invalid ,'is-valid':cliente.controls['anagraficaDto'].get('codiceFiscale').valid }">Codice
+                                            fiscale*</label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" formControlName="codiceFiscale" #codiceFiscale
+                                            class="form-control" (blur)="ricercaAnag($event)" [readOnly]="readOnly">
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="cognome"
+                                        [ngClass]="{'has-error': cliente.controls['anagraficaDto'].get('cognome').invalid,'is-valid':cliente.controls['anagraficaDto'].get('cognome').valid }">Cognome/Rag.
+                                        Sociale**</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="text" formControlName="cognome" #cognome class="form-control"
+                                        [readOnly]="readOnly">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="nome"
+                                        [ngClass]="{'has-error': cliente.controls['anagraficaDto'].get('nome').invalid,'is-valid':cliente.controls['anagraficaDto'].get('nome').valid }">Nome*</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="text" formControlName="nome" #nome class="form-control"
+                                        [readOnly]="readOnly">
+                                </div>
+                                <div class="col-md-12 p-0 m-0 mt-2 row">
+                                    <div class="col-md-2">
+                                        <label for="codiceDestinatario"
+                                            [ngClass]="{'has-error': cliente.controls['anagraficaDto'].get('codiceDestinatario').invalid ,'is-valid':cliente.controls['anagraficaDto'].get('codiceDestinatario').valid }">Codice
+                                            Destinatario</label>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <input type="text" formControlName="codiceDestinatario" #codiceDestinatario
+                                            [readOnly]="readOnly" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-2 mt-2">
+                                    <label for="sesso"
+                                        [ngClass]="{'has-error': cliente.controls['anagraficaDto'].get('sesso').invalid,'is-valid':cliente.controls['anagraficaDto'].get('sesso').valid  }">Sesso*</label>
+                                </div>
+                                <div class="col-md-2 mt-2 pl-3">
+                                    <div class="row ml-3 form-check">
+                                        <div class="col-md-6"> <input type="radio" id="M" formControlName="sesso"
+                                                value="M" [readOnly]="readOnly" class="form-check-input"
+                                                name="sesso"><label class="form-check-label"
+                                                [ngClass]="{'has-error': cliente.controls['anagraficaDto'].get('sesso').invalid,'is-valid':cliente.controls['anagraficaDto'].get('sesso').valid  }"
+                                                for="M">M</label>
+                                        </div>
+                                        <div class="col-md-6"> <input type="radio" id="F" formControlName="sesso"
+                                                value="F" [readOnly]="readOnly" class="form-check-input"
+                                                name="sesso"><label class="form-check-label"
+                                                [ngClass]="{'has-error': cliente.controls['anagraficaDto'].get('sesso').invalid,'is-valid':cliente.controls['anagraficaDto'].get('sesso').valid  }"
+                                                for="F">F</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 mt-2">
+                                    <label for="dataNascita"
+                                        [ngClass]="{'has-error': cliente.controls['anagraficaDto'].get('dataNascita').invalid,'is-valid':cliente.controls['anagraficaDto'].get('dataNascita').valid  }">Data
+                                        nascita*</label>
+                                </div>
+                                <div class="col-md-2 mt-2">
+                                    <input type="date" formControlName="dataNascita" #dataNascita class="form-control"
+                                        [readOnly]="readOnly" max="{{date | date:'yyyy-MM-dd'}}">
+
+                                </div>
+                            </div>
+                            <div class="col-md-12 p-0 m-0 mt-2 row">
+                                <div class="col-md-2">
+                                    <label for="provinciaNascita"
+                                        [ngClass]="{'has-error': cliente.controls['anagraficaDto'].get('provinciaNascita').invalid,'is-valid':cliente.controls['anagraficaDto'].get('provinciaNascita').valid }">Provincia
+                                        nascita*</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <select type="text" (change)="visualizzaComuni($event)" #provinciaNascita
+                                        [disabled]="readOnly" formControlName="provinciaNascita" class="form-select">
+                                        <option value=""></option>
+                                        <option value="{{provincia.codiceProvincia}}"
+                                            *ngFor="let provincia of provincie">
+                                            {{provincia.descrizioneProvincia}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="comuneNascita"
+                                        [ngClass]="{'has-error': cliente.controls['anagraficaDto'].get('comuneNascita').invalid,'is-valid':cliente.controls['anagraficaDto'].get('comuneNascita').valid }">Comune
+                                        nascita*</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <select type="text" formControlName="comuneNascita" #comuneNascita
+                                        [disabled]="readOnly" class="form-select">
+                                        <option value=""></option>
+                                        <option value="{{comune.codiceComune}}" *ngFor="let comune of comuneElenco">
+                                            {{comune.nomeComune}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="cliente.controls.cdTipoCliente.value==='ORG'" class="row">
+                            <div class="col-md-2">
+                                <label for="partitaIva"
+                                    [ngClass]="{'has-error': cliente.controls['anagraficaDto'].get('partitaIva').invalid ,'is-valid':cliente.controls['anagraficaDto'].get('partitaIva').valid }">Partita
+                                    Iva*</label>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="text" formControlName="partitaIva" (blur)="ricercaAnag($event)"
+                                    class="form-control" [readOnly]="readOnly">
+                            </div>
+                            <div class="col-md-2">
+                                <label for="ragioneSociale"
+                                    [ngClass]="{'has-error': cliente.controls['anagraficaDto'].get('ragioneSociale').invalid ,'is-valid':cliente.controls['anagraficaDto'].get('ragioneSociale').valid }">Ragione
+                                    sociale*</label>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="text" formControlName="ragioneSociale" #ragioneSociale class="form-control"
+                                    [readOnly]="readOnly" value="blabla">
+                            </div>
+                            <div class="col-md-2">
+                                <label for="cdTipoOrganizzazione"
+                                    [ngClass]="{'has-error': cliente.controls['anagraficaDto'].get('cdTipoOrganizzazione').invalid ,'is-valid':cliente.controls['anagraficaDto'].get('cdTipoOrganizzazione').valid }">Tipo
+                                    Organizzazione*</label>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="text" formControlName="cdTipoOrganizzazione" class="form-control"
+                                    [readOnly]="readOnly">
+                            </div>
+                            <div class="col-md-2 pt-2">
+                                <label for="codiceDestinatario"
+                                    [ngClass]="{'has-error': cliente.controls['anagraficaDto'].get('codiceDestinatario').invalid ,'is-valid':cliente.controls['anagraficaDto'].get('codiceDestinatario').valid }">Codice
+                                    Destinatario*</label>
+                            </div>
+                            <div class="col-md-2 pt-2">
+                                <input type="text" formControlName="codiceDestinatario" class="form-control"
+                                    [readOnly]="readOnly">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 border rounded bg-white p-3 width-90"
+                    *ngIf="cliente.controls.cdTipoCliente.value==='DOM'">
+                    <div class="row">
+                        <div class="col-md-12 bg-s bg-gradient p-2">
+                            Contatti
+                        </div>
+
+                        <div class="col-md-1 mt-2">
+                            <label for="email"
+                                [ngClass]="{'has-error': cliente.controls['anagraficaDto'].get('email').invalid ,'is-valid':cliente.controls['anagraficaDto'].get('email').valid }">Email</label>
+                        </div>
+                        <div class="col-md-2 mt-2">
+                            <input type="text" formControlName="email" [readOnly]="readOnly" class="form-control">
+                        </div>
+                        <div class="col-md-1 mt-2">
+                            <label for="emailPec"
+                                [ngClass]="{'has-error': cliente.controls['anagraficaDto'].get('emailPec').invalid ,'is-valid':cliente.controls['anagraficaDto'].get('emailPec').valid }">Email
+                                Pec</label>
+                        </div>
+                        <div class="col-md-2 mt-2">
+                            <input type="text" formControlName="emailPec" [readOnly]="readOnly" class="form-control">
+                        </div>
+                        <div class="col-md-1 mt-2">
+                            <label for="telefono"
+                                [ngClass]="{'has-error': cliente.controls['anagraficaDto'].get('telefono').invalid,'is-valid':cliente.controls['anagraficaDto'].get('telefono').valid  }">Telefono</label>
+                        </div>
+                        <div class="col-md-2 mt-2">
+                            <input type="text" formControlName="telefono" [readOnly]="readOnly" class="form-control">
+                        </div>
+                        <div class="col-md-1 mt-2">
+                            <label for="cellulare"
+                                [ngClass]="{'has-error': cliente.controls['anagraficaDto'].get('cellulare').invalid, 'is-valid':cliente.controls['anagraficaDto'].get('cellulare').valid  }">Cellulare</label>
+                        </div>
+                        <div class="col-md-2 mt-2">
+                            <input type="text" formControlName="cellulare" [readOnly]="readOnly" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ngx-shared-indirizzo [data]="dataIndirizzo" [infoClasses]="forCssClasses" [toponimi]="toponimi"
+                [provincie]="provincie" [codiceContratto]="codiceContratto"
+                (sendInformationOnValidityChanges)="updateChanges($event)"></ngx-shared-indirizzo>
+            <div class="row">
+                <div class="col-md-3">
+                </div>
+                <div class="p-3 col-md-9 d-flex justify-content-end">
+                    <div class="row">
+                        <div class="col-6">
+                            <button class="btn btn-outline-dark" routerLink="/contratti">Indietro</button>
+                        </div>
+                        <div class="col-6">
+                            <button class="btn btn-primary pl-3 mt-xs-2 mt-sm-0 pr-3" type="submit" (click)="confirm()">
+                                Avanti </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

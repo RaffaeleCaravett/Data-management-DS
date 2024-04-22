@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~ngx-toastr/toastr';
+
+// bootstrap style toast
+// or import a bootstrap 4 alert styled design (SASS ONLY)
+// should be after your bootstrap imports, it uses bs4 variables, mixins, functions
+/*@import '~ngx-toastr/toastr-bs4-alert';
+
+// if you'd like to use it without importing all of bootstrap it requires
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~ngx-toastr/toastr-bs4-alert';*/
+.ml-4:hover .mr-4:hover{
+  color:red;
+}
+html, body{
+  height: 100vh;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+.btn-secondary{
+  background-color: #ffffff !important;
+  border-color: #CCCCCC !important;
+  color: #000000 !important;
+}
+.custom-round{
+  width: 30px;
+  text-align: center;
+  border-radius: 100%;
+  border: 1px solid black;
+  padding: 0.1rem;
+  margin-right: 0.25rem;
+  margin-top: 0.5rem;
+  display: block;
+}
+.h3,.h4,.h5{
+  font-weight: normal !important;
+}
+.borderFluo{
+  border: 1px solid rgb(216, 216, 216);
+  border-radius: 3px;
+  min-height:95%;
+  min-width:95%;
+}
+

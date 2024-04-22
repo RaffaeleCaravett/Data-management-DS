@@ -1,0 +1,230 @@
+      <ng-container [formGroup]="form">
+      <div formGroupName="coincideConCliente" class="mt-2 mb-2">
+            <div class="col-md-12 border rounded bg-white p-3 width90">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="row mb-2">
+                      <div class="col-md-4">
+                        <input
+                          type="checkbox"
+                          (change)="coincideClient();setInfoValidityChanges($event)"
+                          formControlName="coincideCliente"
+                          class="form-check-input ml-1"
+                          id="coincideCliente"
+                        /><label
+                          (click)="setInfoValidityChanges($event)"
+                          #Intest
+                          for="coincideCliente"
+                          class="form-control-label  ml-4"
+                        >
+                        <span *ngIf="org==false">Intestatario C/C coincide con Cliente</span>
+                        <span *ngIf="org==true">Intestatario C/C coincide con la Società</span>
+                        </label
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12" *ngIf="org==false">
+                    <div class="row">
+                      <div class="col-md-2">
+                        <label
+                          for="codiceFiscale"
+                          [ngClass]="{
+                            'has-error':
+                            infoClasses&&infoClasses.codiceFiscale==false&&infoClasses.submitted==true , 
+                            'is-valid':infoClasses&&infoClasses.codiceFiscale==true&&infoClasses.submitted==true  
+                          }"
+                          class="form-control-label"
+                          >Codice Fiscale*</label
+                        >
+                      </div>
+                      <div class="col-md-2">
+                        <input
+                          type="text"
+                          class="form-control"
+                          [readOnly]="readOi"
+                          formControlName="codiceFiscale"
+                          [ngClass]="{'has-errors': infoClasses&&infoClasses.codiceFiscale==false&&infoClasses.submitted==true , 
+                          'its-valid':infoClasses&&infoClasses.codiceFiscale==true&&infoClasses.submitted==true  }"
+                          (input)="setInfoValidityChanges($event)"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12" *ngIf="org==true">
+                    <div class="row">
+                      <div class="col-md-2">
+                        <label
+                          for="codiceFiscale"
+                          [ngClass]="{
+                            'has-error':
+                            infoClasses&&infoClasses.codiceFiscale==false&&infoClasses.submitted==true , 
+                          'is-valid':infoClasses&&infoClasses.codiceFiscale==true&&infoClasses.submitted==true
+                          }"
+                          class="form-control-label"
+                          >Partita Iva*</label
+                        >
+                      </div>
+                      <div class="col-md-2">
+                        <input
+                          type="text"
+                          class="form-control"
+                          [readOnly]="readOi"
+                          formControlName="codiceFiscale"
+                          [ngClass]="{'has-errors': infoClasses&&infoClasses.codiceFiscale==false&&infoClasses.submitted==true , 
+                          'its-valid':infoClasses&&infoClasses.codiceFiscale==true&&infoClasses.submitted==true  }"
+                          (input)="setInfoValidityChanges($event)"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12" *ngIf="org==false">
+                    <div class="row pt-2">
+                      <div class="col-md-2">
+                        <label
+                          for="nome"
+                          [ngClass]="{
+                            'has-error':
+                           infoClasses&&infoClasses.nome==false&&infoClasses.submitted==true , 
+                            'is-valid':infoClasses&&infoClasses.nome==true&&infoClasses.submitted==true 
+                          }"
+                          class="form-control-label"
+                          >Nome*</label
+                        >
+                      </div>
+                      <div class="col-md-2">
+                        <input
+                          type="text"
+                          class="form-control"
+                          [readOnly]="readOi"
+                          formControlName="nome"
+                          [ngClass]="{'has-errors': infoClasses&&infoClasses.nome==false&&infoClasses.submitted==true , 
+                          'its-valid':infoClasses&&infoClasses.nome==true&&infoClasses.submitted==true  }"
+                          (input)="setInfoValidityChanges($event)"
+                        />
+                      </div>
+                      <div class="col-md-2">
+                        <label
+                          for="cognome"
+                          [ngClass]="{
+                            'has-error':
+                            infoClasses&&infoClasses.cognome==false&&infoClasses.submitted==true , 
+                            'is-valid':infoClasses&&infoClasses.cognome==true&&infoClasses.submitted==true 
+                          }"
+                          class="form-control-label"
+                          >Cognome*</label
+                        >
+                      </div>
+                      <div class="col-md-2">
+                        <input
+                          type="text"
+                          class="form-control"
+                          [readOnly]="readOi"
+                          formControlName="cognome"
+                          [ngClass]="{'has-errors': infoClasses&&infoClasses.cognome==false&&infoClasses.submitted==true , 
+                          'its-valid':infoClasses&&infoClasses.cognome==true&&infoClasses.submitted==true  }"
+                          (input)="setInfoValidityChanges($event)"
+                        />
+                      </div>
+                      <div class="col-md-2">
+                        <label
+                          for="iban"
+                          [ngClass]="{
+                            'has-error':
+                            infoClasses&&infoClasses.iban==false&&infoClasses.submitted==true , 
+                            'is-valid':infoClasses&&infoClasses.iban==true&&infoClasses.submitted==true 
+                          }"
+                          class="form-control-label"
+                          >Iban*</label
+                        >
+                      </div>
+                      <div class="col-md-2">
+                        <input
+                          type="text"
+                          class="form-control"
+                          formControlName="iban"
+                          [ngClass]="{'has-errors': infoClasses&&infoClasses.iban==false&&infoClasses.submitted==true , 
+                          'its-valid':infoClasses&&infoClasses.iban==true&&infoClasses.submitted==true  }"
+                          (input)="setInfoValidityChanges($event)"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12" *ngIf="org==true">
+                    <div class="row pt-2">
+                      <div class="col-md-2">
+                        <label
+                          for="nome"
+                          [ngClass]="{
+                            'has-error':
+                            infoClasses&&infoClasses.nome==false&&infoClasses.submitted==true , 
+                            'is-valid':infoClasses&&infoClasses.nome==true&&infoClasses.submitted==true
+                          }"
+                          class="form-control-label"
+                          >Codice destinatario*</label
+                        >
+                      </div>
+                      <div class="col-md-2">
+                        <input
+                          type="text"
+                          class="form-control"
+                          [readOnly]="readOi"
+                          formControlName="nome"
+                          [ngClass]="{'has-errors': infoClasses&&infoClasses.nome==false&&infoClasses.submitted==true , 
+                          'its-valid':infoClasses&&infoClasses.nome==true&&infoClasses.submitted==true  }"
+                          (input)="setInfoValidityChanges($event)"
+                        />
+                      </div>
+                      <div class="col-md-2">
+                        <label
+                          for="cognome"
+                          [ngClass]="{
+                            'has-error':
+                            infoClasses&&infoClasses.cognome==false&&infoClasses.submitted==true , 
+                            'is-valid':infoClasses&&infoClasses.cognome==true&&infoClasses.submitted==true 
+                          }"
+                          class="form-control-label"
+                          >Ragione Sociale*</label
+                        >
+                      </div>
+                      <div class="col-md-2">
+                        <input
+                          type="text"
+                          class="form-control"
+                          [readOnly]="readOi"
+                          formControlName="cognome"
+                          [ngClass]="{'has-errors': infoClasses&&infoClasses.cognome==false&&infoClasses.submitted==true , 
+                          'its-valid':infoClasses&&infoClasses.cognome==true&&infoClasses.submitted==true  }"
+                          (input)="setInfoValidityChanges($event)"
+                        />
+                      </div>
+                      <div class="col-md-2">
+                        <label
+                          for="iban"
+                          [ngClass]="{
+                            'has-error':
+                            infoClasses&&infoClasses.iban==false&&infoClasses.submitted==true , 
+                            'is-valid':infoClasses&&infoClasses.iban==true&&infoClasses.submitted==true
+                          }"
+                          class="form-control-label"
+                          >Iban*</label
+                        >
+                      </div>
+                      <div class="col-md-2">
+                        <input
+                          type="text"
+                          class="form-control"
+                          formControlName="iban"
+                          [ngClass]="{'has-errors': infoClasses&&infoClasses.iban==false&&infoClasses.submitted==true , 
+                          'its-valid':infoClasses&&infoClasses.iban==true&&infoClasses.submitted==true  }"
+                          (input)="setInfoValidityChanges($event)"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </ng-container>

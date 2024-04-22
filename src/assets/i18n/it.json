@@ -1,0 +1,26 @@
+{
+  "commonMessages": {
+    "send": "Invia",
+    "back": "Indietro"
+  },
+  "login": {
+    "button": {
+      "forgotPassword": "Hai dimenticato la password?",
+      "login": "LOGIN",
+      "reset": "RESET"
+    }
+  },
+  "forgot": {
+    "title": "Hai dimenticato la password?",
+    "subTitle": "Inserisci la tua email nell'input sottostante e ti invieremo un'email con il link per reimpostare la tua password",
+    "title_reset": "Reset Password"
+  },
+  "validation": {
+    "pwd_required": "La password è richiesta",
+    "confirm_pwd_required": "Conferma password è richiesta",
+    "pwd_match":"Password e ripeti password non sono uguali",
+    "username_required": "L'username è richiesta",
+    "username_correct": "Inserisci un username corretta",
+    "code_required": "Il codice è richiesto"
+  }
+}

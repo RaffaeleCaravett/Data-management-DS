@@ -1,0 +1,79 @@
+<p>Stai effettuando la modifica dell'indirizzo di fatturazione</p>
+
+<div class="row border rounded shadow m-3 p-3">
+<div class="col-md-3">
+  <h2 class="mb-2">Step di modifca:</h2>
+  <div class="col-md-12" [ngStyle]="{'color':location? 'rgb(1,1,58)':'white','background':location? 'white':'rgb(1,1,58)'}">1 - Inserimento Dati</div>
+  <div class="col-md-12" [ngStyle]="{'color':location? 'white':'rgb(1,1,58)','background':location? 'rgb(1,1,58)':'white'}">2 - Riepilogo dati</div>
+</div>
+  <div class="col-md-9">
+    <form name="loginForm " [formGroup]="myForm">
+      <div class="m-auto w-50" *ngIf="!showWizard1">
+        <div class="form-group row " *ngIf="!showWizard1">
+          <label for="exampleInputProvincia" class="col-sm-2 col-form-label">Provincia*</label>
+          <div class="col-sm-10">
+            <select name="languages" id="lang" *ngIf="provincie" (change)="visualizzaComuni($event)"
+              class="form-select w-100" formControlName="provincia">
+              <option value=""></option>
+              <option *ngFor="let x of provincia" [value]="x.codiceProvincia">{{x.descrizioneProvincia}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row  " *ngIf="!showWizard1">
+          <label for="exampleInputComune" class="col-sm-2 col-form-label">Comune*</label>
+          <div class="col-sm-10">
+          <select name="languages" id="lang" [disabled]="!comuneElenco" (change)="visualizzaCap($event)"
+            class="form-select w-100" formControlName="comune">
+            <option value=""></option>
+            <option *ngFor="let x of comuneElenco" [value]="x.codiceComune">{{x.nomeComune}}</option>
+          </select>
+        </div>
+        </div>
+        <div class="form-group row romario " *ngIf="!showWizard1">
+          <label for="exampleInput" class="col-sm-2 col-form-label">Cap*</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control w-100" name="cap"  formControlName="cap"
+              placeholder="inserisci il cap" [(ngModel)]="codiceCap" [readOnly]="true">
+          </div>
+        </div>
+        <div class="form-group row romario " *ngIf="!showWizard1">
+          <label for="exampleInputToponimo" class="col-sm-2 col-form-label">Toponimo*</label>
+          <div class="col-sm-10">
+          <select name="languages" id="lang" *ngIf="toponimo" class="form-select w-100" formControlName="toponimo">
+            <option value=""></option>
+            <option *ngFor="let x of toponimo1" [value]="x.codiceToponimo">{{x.descrizioneToponimo}}</option>
+          </select>
+        </div>
+        </div>
+        <div class="form-group row romario " *ngIf="!showWizard1">
+          <label for="exampleInputIndirizzo" class="col-sm-2 col-form-label ">Indirizzo*</label>
+          <div class="col-sm-10">
+            <input type="cap" class="form-control w-100" id="inputCap" placeholder="Inserisci l'indirizzo"
+              formControlName="indirizzo">
+          </div>
+        </div>
+        <div class="form-group row romario" *ngIf="!showWizard1">
+          <label for="exampleInputPresso" class="col-sm-2 col-form-label">Presso</label>
+          <div class="col-sm-10">
+            <input type="presso" class="form-control w-100" id="inputPresso"  formControlName="presso"
+              placeholder="inserisci il presso">
+          </div>
+        </div>
+        <div class="form-group row romario" *ngIf="!showWizard1">
+          <label for="exampleInputNumeroCivico" class="col-sm-2 col-form-label">N.Civico* </label>
+          <div class="col-sm-10">
+            <input type="numeroCivico" class="form-control w-100" formControlName="numeroCivico"
+              id="numeroCivico" placeholder="inserisci il numero civico">
+          </div>
+        </div>
+      </div>
+      <ngx-riepilogo *ngIf="showWizard1" [rawValue]="valoreModificato" (modificaIndirizzo)="aggiornaIndirizzo()"
+        (esci)="pippo()">
+      </ngx-riepilogo>
+      <div class="form-group align-content-center" *ngIf="!showWizard1">
+        <button class="btn btn-light m-1" (click)="esci()">Indietro</button>
+        <button (click)="riepilogo()" [disabled]="!myForm.valid" class="btn rgb m-1">Modifica Indirizzo
+          Fatturazione</button>
+      </div>
+    </form>
+  </div>

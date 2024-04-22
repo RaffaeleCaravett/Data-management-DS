@@ -1,0 +1,289 @@
+<div class="container">
+  <div class="row">
+    <form [formGroup]="pagamentoForm" (ngSubmit)="inviaPagamento()">
+      <div class="row bg-white">
+        <div>
+          <ngx-shared-indirizzo
+          [data]="dataIndirizzo" [infoClasses]="forCssClasses"
+          [toponimi]="toponimi" [provincie]="provincie" 
+          [codiceContratto]="codiceContratto"
+          (sendInformationOnValidityChanges)="updateChanges($event)"
+          ></ngx-shared-indirizzo>
+          <div formGroupName="modalitaSpedizioneFattura" class="mt-2">
+            <div class="col-md-12 border rounded bg-white p-3 width-90">
+              <div class="row">
+                <div class="col-md-12 p-3">Modalità spedizione fattura</div>
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <label
+                        for="tipoInvio"
+                        [ngClass]="{
+                          'has-error':
+                            pagamentoForm.controls[
+                              'modalitaSpedizioneFattura'
+                            ].get('tipoInvio').invalid,
+                          'is-valid':
+                            pagamentoForm.controls[
+                              'modalitaSpedizioneFattura'
+                            ].get('tipoInvio').valid
+                        }"
+                        >Tipo invio:*</label
+                      >
+                    </div>
+                    <div class="col-md-7 form-check">
+                      <div class="d-flex flex-row justify-content-around">
+                        <div *ngFor="let tipoInvio of tipiInvio;index as i">
+                          <input
+                            type="radio"
+                            class="form-control-check"
+                            value="{{ tipoInvio.cdTipoInvio }}"
+                            (change)="updateValidators(tipoInvio.cdTipoInvio)"
+                            formControlName="tipoInvio"
+                            id="tipoInvio{{i}}"
+                          />
+                          <label
+                            for="tipoInvio{{i}}"
+                            [ngClass]="{
+                              'has-error':
+                                pagamentoForm.controls[
+                                  'modalitaSpedizioneFattura'
+                                ].get('tipoInvio').invalid,
+                              'is-valid':
+                                pagamentoForm.controls[
+                                  'modalitaSpedizioneFattura'
+                                ].get('tipoInvio').valid
+                            }"
+                            class="pl-1 form-check-label"
+                            >{{ tipoInvio.dsTipoInvio }}</label
+                          >
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      class="col-md-1"
+                      *ngIf="
+                        pagamentoForm.controls['modalitaSpedizioneFattura'].get(
+                          'tipoInvio'
+                        ).value &&
+                        pagamentoForm.controls['modalitaSpedizioneFattura'].get(
+                          'tipoInvio'
+                        ).value == 'E'
+                      "
+                    >
+                      <label
+                        for="indirizzoEmail"
+                        [ngClass]="{
+                          'has-error':
+                            pagamentoForm.controls[
+                              'modalitaSpedizioneFattura'
+                            ].get('indirizzoEmail').invalid,
+                          'is-valid':
+                            pagamentoForm.controls[
+                              'modalitaSpedizioneFattura'
+                            ].get('indirizzoEmail').valid
+                        }"
+                        >Indirizzo email*</label
+                      >
+                    </div>
+                    <div
+                      class="col-md-2"
+                      *ngIf="
+                        pagamentoForm.controls['modalitaSpedizioneFattura'].get(
+                          'tipoInvio'
+                        ).value &&
+                        pagamentoForm.controls['modalitaSpedizioneFattura'].get(
+                          'tipoInvio'
+                        ).value == 'E'
+                      "
+                    >
+                      <input
+                        type="email"
+                        class="form-control"
+                        formControlName="indirizzoEmail"
+                      />
+                    </div>
+                    <div
+                      class="col-md-1"
+                      *ngIf="
+                        pagamentoForm.controls['modalitaSpedizioneFattura'].get(
+                          'tipoInvio'
+                        ).value &&
+                        pagamentoForm.controls['modalitaSpedizioneFattura'].get(
+                          'tipoInvio'
+                        ).value == 'T'
+                      "
+                    >
+                      <label
+                        for="indirizzoEmail"
+                        [ngClass]="{
+                          'has-error':
+                            pagamentoForm.controls[
+                              'modalitaSpedizioneFattura'
+                            ].get('indirizzoEmail').invalid,
+                          'is-valid':
+                            pagamentoForm.controls[
+                              'modalitaSpedizioneFattura'
+                            ].get('indirizzoEmail').valid
+                        }"
+                        >Indirizzo email*</label
+                      >
+                    </div>
+                    <div
+                      class="col-md-2"
+                      *ngIf="
+                        pagamentoForm.controls['modalitaSpedizioneFattura'].get(
+                          'tipoInvio'
+                        ).value &&
+                        pagamentoForm.controls['modalitaSpedizioneFattura'].get(
+                          'tipoInvio'
+                        ).value == 'T'
+                      "
+                    >
+                      <input
+                        type="email"
+                        class="form-control"
+                        formControlName="indirizzoEmail"
+                      />
+                    </div>
+                    <div
+                      class="col-md-1"
+                      *ngIf="
+                        pagamentoForm.controls['modalitaSpedizioneFattura'].get(
+                          'tipoInvio'
+                        ).value &&
+                        pagamentoForm.controls['modalitaSpedizioneFattura'].get(
+                          'tipoInvio'
+                        ).value == 'X'
+                      "
+                    >
+                      <label
+                        for="indirizzoEmail"
+                        [ngClass]="{
+                          'has-error':
+                            pagamentoForm.controls[
+                              'modalitaSpedizioneFattura'
+                            ].get('indirizzoEmail').invalid,
+                          'is-valid':
+                            pagamentoForm.controls[
+                              'modalitaSpedizioneFattura'
+                            ].get('indirizzoEmail').valid
+                        }"
+                        >Codice destinatario*</label
+                      >
+                    </div>
+                    <div
+                      class="col-md-2"
+                      *ngIf="
+                        pagamentoForm.controls['modalitaSpedizioneFattura'].get(
+                          'tipoInvio'
+                        ).value &&
+                        pagamentoForm.controls['modalitaSpedizioneFattura'].get(
+                          'tipoInvio'
+                        ).value == 'X'
+                      "
+                    >
+                      <input
+                        type="email"
+                        class="form-control"
+                        formControlName="indirizzoEmail"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div formGroupName="modalitaPagamento" class="mt-2">
+            <div class="col-md-12 border rounded bg-white p-3 width-90">
+              <div class="row">
+                <div class="col-md-12 p-3">Modalità Pagamento</div>
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <label
+                        for="tipoInvio"
+                        [ngClass]="{
+                          'has-error':
+                            pagamentoForm.controls['modalitaPagamento'].get(
+                              'tipoPagamento'
+                            ).invalid,
+                          'is-valid':
+                            pagamentoForm.controls['modalitaPagamento'].get(
+                              'tipoPagamento'
+                            ).valid
+                        }"
+                        >Tipo pagamento:*</label
+                      >
+                    </div>
+                    <div class="col-md-8">
+                      <div class="row">
+                        <div
+                          class="col-md-4 pb-3"
+                          *ngFor="let tipoPagamento of tipiPagamento;index as i"
+                        >
+                          <input
+                            type="radio"
+                            class="form-control-check"
+                            value="{{ tipoPagamento.cdTipoPagamento }}"
+                            formControlName="tipoPagamento"
+                            id="tipoPagamento{{i}}"
+                          />
+                          <label
+                            for="tipoPagamento{{i}}"
+                            [ngClass]="{
+                              'has-error':
+                                pagamentoForm.controls['modalitaPagamento'].get(
+                                  'tipoPagamento'
+                                ).invalid,
+                              'is-valid':
+                                pagamentoForm.controls['modalitaPagamento'].get(
+                                  'tipoPagamento'
+                                ).valid
+                            }"
+                            class="form-check-label ml-2"
+                            >{{ tipoPagamento.dsTipoPagamento }}</label
+                          >
+                        </div>
+                      </div>
+                    </div>
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ngx-coincide-cliente-pagamento
+          [data]="dataIndirizzo" [infoClasses]="forCssClasses"
+          [codiceContratto]="codiceContratto"
+          (sendInformationOnValidityChanges)="updateChanges($event)"
+          >
+          </ngx-coincide-cliente-pagamento>
+          <div class="row">
+            <div class="col-md-3">
+            </div>
+            <div class="p-3 col-md-9 d-flex justify-content-end">
+              <div class="row">
+                <div class="col-6">
+                  <button class="btn btn-outline-dark" (click)="vaiIndietro()">
+                    Indietro
+                  </button>
+                </div>
+                <div class="col-6">
+                  <button
+                    class="btn btn-primary pl-3 mt-xs-2 mt-sm-0 pr-3"
+                    type="submit"
+                  >
+                    Avanti
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

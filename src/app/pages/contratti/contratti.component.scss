@@ -1,0 +1,136 @@
+.col-md-3{
+
+
+
+.annulla{
+        background: rgb(234, 49, 49);
+        border:1px solid gray
+    }
+.ricerca{
+        background:rgb(73, 73, 249);
+        border:1px solid gray
+    }
+
+    .annulla:hover, .ricerca:hover{
+        color:white
+    }
+}
+table{
+    text-align: center;
+    width:100%;
+    th{
+        border: 1px solid rgb(212, 212, 212);
+        background-color: rgb(1,1,58);
+          color: white;
+
+        text-align: center;
+    }
+    td{
+        border: 1px solid rgb(212, 212, 212);
+    }
+    tr{
+        border: 1px solid rgb(212, 212, 212);
+
+    }
+     tr:nth-child(even){
+        background-color: rgb(221, 221, 221);
+     }
+     tr:hover{
+        background-color: rgb(221, 221, 221);
+        th{
+          background-color: rgb(221, 221, 221);
+          color:rgb(1,1,58);
+        }
+     }
+.wfit{
+ min-width:fit-content
+}
+}
+.col-md-9::-webkit-scrollbar,.col-xs-12::-webkit-scrollbar  {
+    
+    width: 0; /* Remove scrollbar space */
+    height: 10px;
+    background: transparent; /* Optional: just make scrollbar invisible */
+ }
+ 
+ .col-md-9::-webkit-scrollbar-thumb,.col-xs-12::-webkit-scrollbar  {
+    background: rgb(0, 0, 0);
+    border-radius: 1rem;
+ }  ::ng-deep.bg-primary{
+    background-color:rgb(1,1,58);
+  } 
+  ::ng-deep.btn-primary{
+    background-color:rgb(1,1,58);
+    border:1px solid rgb(1,1,58);
+    &:hover, 
+  &:focus,
+  &:active{
+     background-color:rgb(1,1,58);
+    border:1px solid rgb(1,1,58);
+  }
+}
+::ng-deep.text-primary{
+    color:rgb(1,1,58)!important;
+  }
+  ::ng-deep.text-info{
+    color:rgb(1,1,58)!important;
+  }
+
+  mat-paginator {
+    color:rgb(1,1,58);
+    ::ng-deep.mat-button-disabled{
+      svg{
+        color:gray;
+      }
+    }
+
+    ::ng-deep.mat-paginator-page-size-label{
+      color:gray;
+    }
+    ::ng-deep.mat-paginator-range-label{
+      color:gray;
+    }
+    ::ng-deep.mat-select-value {
+      color:rgb(1,1,58)
+    }
+    ::ng-deep.mat-select-arrow {
+    color:rgb(1,1,58)
+  }
+
+      ::ng-deep.mat-form-field.mat-focused.mat-primary{
+        .mat-select-arrow{
+   color:rgb(1,1,58)
+        }
+
+  }
+  ::ng-deep.mat-form-field.mat-focused {
+    .mat-form-field-ripple {
+    background-color:rgb(1,1,58)
+  }
+}
+
+  ::ng-deep.mat-form-field-underline{
+    background-color:rgb(1,1,58)
+  }
+
+  }
+  ::ng-deep .form-control:focus {
+    color:rgb(1,1,58);
+    background-color: #fff;
+    border-color: rgb(1,1,58);
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgb(1,1,58);
+}
+::ng-deep .form-select:focus {
+  border-color: rgb(1, 1, 58);
+  box-shadow: 0 0 0 0.2rem  rgb(1, 1, 58);
+}
+::ng-deep [type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 30px;
+  width: 30px;
+  background-image: url(../../../assets/icons8-delete-100.png);
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+}

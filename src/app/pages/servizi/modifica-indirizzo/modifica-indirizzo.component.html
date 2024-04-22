@@ -1,0 +1,52 @@
+<div class="text-center w-100 bg-white p-3 border rounded shadow">
+  <h1>Modifica indirizzo e fatturazioni</h1>
+  <p *ngIf="!showWizard">In questa sezione potrai modificare l'indirizzo per le fatturazioni, qualora non fosse attivo il servizio di
+    bolletta web.<br>
+    In caso di modifica, verrà utilizzato come recapito delle bollette e di eventuali comunicazioni </p>
+
+  <ng-container *ngIf="!showWizard">
+    <form [formGroup]="homeform" (ngSubmit)="onSubmit()">
+      <ng-container *ngFor="let x of indirizzi,index as i"  >
+        <div class="row border border-light shadow-sm rounded m-3 p-4 hover"  (click)="c.checked=!c.checked; ctr(c,x,i+1)"
+          [ngClass]="forBackground==i+1?'alice-blue':''">
+
+          <div class="col-md-1">
+            <input class="form-control-check d-none" type="checkbox" name="check" value="" formControlName="checkbox" #c
+            />
+          </div>
+          <div class="col-md-1">
+            <i class="fa fa-bolt " aria-hidden="true"> </i>
+          </div>
+          <div class="col-md-4">
+            <i>Indirizzo della fornitura <i class="fa fa-map-pin pl-2"></i><br>
+              <div >{{x.indirizzoFornitura}}</div>
+            </i>
+          </div>
+          <div class="col-md-2">
+
+            <i>Numero cliente <i class="fa fa-list-ol"></i><br>
+              <div >{{x.codice}}</div>
+            </i>
+
+          </div>
+          <div class="col-md-4">
+
+            <i>Attuale indirizzo di fatturazione <i class="fa fa-file-invoice-dollar pl-2"></i><br>
+              <div >{{x.indirizzoFatturazione}}</div>
+            </i>
+
+          </div>
+        </div>
+      
+      </ng-container>
+    </form>
+  </ng-container>
+  <ngx-wizard (event)="backToModifica($event)" [options]="checkboxSelezionata" *ngIf="showWizard">
+  </ngx-wizard>
+  <div class="row" *ngIf="!showWizard">
+    <div class="col-md-12 ">
+      <button class="btn rgb" (click)="modificaIndirizzo()" [disabled]="!checkboxSelezionata">Modifica Indirizzo
+        di fatturazione</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+<ngx-nav [value]="long" [color]="color1"></ngx-nav>
+<ngx-cliente *ngIf="string=='cliente'" (cdContratto)="onSaveCodiceContratto($event)" [codiceContratto]="codContratto"  (value)="navbarUpload($event)" (color)="navbarUploadColor($event)"  (activated)="onActivated($event)"></ngx-cliente>
+<ngx-pagamento *ngIf="string=='pagamento'" (activated)="onActivated($event)" (cdContratto)="onSaveCodiceContratto($event)"  [codiceContratto]="codContratto"  (value)="navbarUpload($event)"></ngx-pagamento>
+<ngx-informazioni-fornitura *ngIf="string=='informazioniFornitura'" (cdContratto)="onSaveCodiceContratto($event)" (activated)="onActivated($event)"  [codiceContratto]="codContratto" (value)="navbarUpload($event)"></ngx-informazioni-fornitura>
+<ngx-files-allegati *ngIf="string=='filesAllegati'" (cdContratto)="onSaveCodiceContratto($event)" (activated)="onActivated($event)"  [codiceContratto]="codContratto" (color)="navbarUploadColor($event)" (value)="navbarUpload($event)"></ngx-files-allegati>

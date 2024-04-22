@@ -1,0 +1,197 @@
+
+.custom-tooltip {
+  --bs-tooltip-bg: var(blue);
+}
+
+h1{
+  text-shadow: 1px 1px  gray;
+}
+
+.t{
+  width: 100%;
+  background-color: white;
+
+}
+.ech{
+  width: auto;
+  height: 250px;
+  padding-bottom: 5%;
+}
+
+.height{
+  min-height: 500px;
+}
+
+mat-header-cell, mat-cell {
+  justify-content: center;
+  flex: 0 0 20%;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: lightgrey;
+
+}
+ mat-paginator.mat1 {
+    color:red;
+    ::ng-deep.mat-button-disabled{
+      svg{
+        color:rgb(244, 132, 58);;
+      }
+    }
+
+    ::ng-deep.mat-paginator-page-size-label{
+      color:rgb(244, 132, 58);;
+    }
+    ::ng-deep.mat-paginator-range-label{
+      color:rgb(244, 132, 58);;
+    }
+    ::ng-deep.mat-select-value {
+      color:red
+    }
+    ::ng-deep.mat-select-arrow {
+    color: red
+  }
+
+      ::ng-deep.mat-form-field.mat-focused.mat-primary{
+        .mat-select-arrow{
+   color: red
+        }
+
+  }
+  ::ng-deep.mat-form-field.mat-focused {
+    .mat-form-field-ripple {
+    background-color: red
+  }
+}
+
+  ::ng-deep.mat-form-field-underline{
+    background-color: red
+  }
+
+  }
+  .oa::-webkit-scrollbar {
+
+    width: 0; /* Remove scrollbar space */
+   height: 10px;
+    background: transparent; /* Optional: just make scrollbar invisible */
+ }
+
+ .oa::-webkit-scrollbar-thumb {
+    background: red;
+    border-radius: 1rem;
+ }
+
+
+
+  mat-paginator.mat2{
+    color:rgb(28, 153, 185);
+
+
+    ::ng-deep.mat-button-base.mat-button-disabled{
+      svg{
+        color:rgb(174, 220, 231)
+      }
+    }
+    ::ng-deep.mat-paginator-page-size-label{
+      color:rgb(174, 220, 231)
+    }
+    ::ng-deep.mat-paginator-range-label{
+      color:rgb(174, 220, 231)
+    }
+    ::ng-deep.mat-select-value {
+      color:rgb(28, 153, 185)
+    }
+    ::ng-deep.mat-select-arrow {
+    color: rgb(28, 153, 185)
+  }
+
+      ::ng-deep.mat-form-field.mat-focused.mat-primary{
+        .mat-select-arrow{
+   color: rgb(28, 153, 185)
+        }
+
+  }
+  ::ng-deep.mat-form-field.mat-focused {
+    .mat-form-field-ripple {
+    background-color: rgb(28, 153, 185)
+  }
+}
+
+  ::ng-deep.mat-form-field-underline{
+    background-color: rgb(28, 153, 185)
+  }
+  }
+
+table{
+  text-align: center;
+  width:100%;
+  height: 100%;
+
+
+  .mat-row:nth-child(odd){
+    background-color:white;
+  }
+
+
+
+ .mat-row:hover{
+  background-color:rgb(244, 132, 58);
+ }
+
+.wfit{
+min-width:fit-content
+}
+
+  }
+
+.mat-row:nth-child(odd){
+  background-color: rgb(221, 221, 221);
+}
+.mat-row:hover {
+  background-color: rgb(221, 221, 221);
+
+}
+
+@media only screen and (max-width:768px){
+  .quadrato{
+      margin-top: 60px;
+  }
+}
+
+color{
+  color:rgb(244, 132, 58);
+}
+
+
+.transparent{
+ display: none;
+}
+.bg{
+  background-color: rgb(225, 146, 146);
+}
+.bgi{
+  background-color: rgb(186, 249, 249);
+}
+.ho:hover{
+background-color: rgb(208, 208, 208);
+}
+.bg-personal{
+  background: rgb(1,1,58);
+}
+.mat-header-cell[mat-header-cell] {
+  text-align: center;
+  color:rgb(244, 132, 58);
+}
+.mat-header-cell[mat-sort-header]{
+
+  text-align: center;
+  color:rgb(17, 97, 117);
+  border-left: none;
+  border-right: none;
+
+}
+  ::ng-deep.mat-form-field-appearance-legacy .mat-form-field-label {
+    color: rgb(1,1,58);
+}
+::ng-deep.mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: rgb(1,1,58);
+}

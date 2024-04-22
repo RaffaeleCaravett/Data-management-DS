@@ -1,0 +1,26 @@
+::ng-deep .mat-dialog-title {
+    margin: 0 0 20px;
+    display: block;
+    background-color:  rgb(1, 1, 58);
+  p{
+    font-size: 22px;
+    font-weight: bold;
+  }
+}
+
+::ng-deep.mat-dialog-container {
+    padding: 0px;
+    margin:0px;
+    overflow-x: hidden;
+    position: relative
+    p{
+        font-size: 18px;
+      }
+}
+::ng-deep div[mat-dialog-content]{
+  height:46%;
+  p{
+padding-top: 10%;
+  }
+}
+/* width */

@@ -1,0 +1,56 @@
+version: '2'
+services:
+  rest: 
+    image: '361207463645.dkr.ecr.eu-south-1.amazonaws.com/data-managment:latest'
+    container_name: 'data-managment-container-rest'
+    restart: always
+    depends_on:
+      - db
+      - db-order-entry
+    ports: 
+      - "8090:8082"
+  rest2: 
+    image: '361207463645.dkr.ecr.eu-south-1.amazonaws.com/order-entry-be:latest'
+    container_name: 'order-entry-container-rest'
+    restart: always
+    depends_on:
+      - db
+    ports: 
+      - "8091:8083"
+  fe:
+    image: '361207463645.dkr.ecr.eu-south-1.amazonaws.com/data-managment-fe:latest'
+    container_name: 'data-managment-container-fe'
+    restart: always
+    depends_on:
+      - rest
+    ports: 
+      - "4200:80"
+  db:
+    image: 'postgres'
+    container_name: 'data-managment-container-db'
+    environment:
+      - POSTGRES_USER=digiservice
+      - POSTGRES_PASSWORD=Digiservice*2023
+      - PGDATA=/postgresdata
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-volume:/postgresdata
+  db-order-entry:
+    image: 'postgres'
+    container_name: 'order-entry-container-db'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=Digiservice*2023
+      - PGDATA=/postgresdata
+    restart: always
+    ports:
+      - "5433:5432"
+    volumes:
+      - db-order-entry-volume:/postgresdata
+volumes:
+  db-volume:
+    driver: local
+  db-order-entry-volume:
+    driver: local

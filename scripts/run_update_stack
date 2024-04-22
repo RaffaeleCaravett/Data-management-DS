@@ -1,0 +1,6 @@
+#!/bin/bash
+export P_USER="admin" 
+export P_PASS="p*1mU%#L77md&0KW9N*s" 
+export P_URL="http://localhost:92" 
+export P_PRUNE="false"
+/home/ec2-user/script/stack_update data-management /home/ec2-user/docker-compose/dmf-docker-compose.yml

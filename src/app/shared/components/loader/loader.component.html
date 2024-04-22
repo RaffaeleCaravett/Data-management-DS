@@ -1,0 +1,18 @@
+<ng-container *ngIf="inLoading$ | async">
+    <div class="loader-vail"></div>
+    <div class="main-loader">
+
+        <div class="custom-win" *ngIf="showMessage$ | async">
+            <span class="font-weight-bold color-green">Prima si continuare sul gestionale devi chiudi il viewer GIS.</span>
+        </div>
+        <div class="loader">
+            <svg *ngIf="!loaderTemplate" class="circular-loader" viewBox="25 25 50 50">
+                <circle class="loader-path" cx="50" cy="50" r="20" fill="none" stroke="#70c542" stroke-width="2" />
+            </svg>
+            <ng-container *ngIf="loaderTemplate">
+                <ng-template [ngTemplateOutlet]="loaderTemplate">
+                </ng-template>
+            </ng-container>
+        </div>
+    </div>
+</ng-container>

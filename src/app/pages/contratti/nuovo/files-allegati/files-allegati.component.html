@@ -1,0 +1,168 @@
+<div class="container bg-secondaryy">
+  <div class="row p-3 bg-white">
+    <div class="row m-auto border rounded width-90">
+      <div class="col-md-12 p-3">File obbligatori</div>
+      <div class="row">
+        <div class="col-md-12">
+          <form [formGroup]="filesAllegatiForm">
+            <div class="row">
+              <div class="col-md-2">
+                <label for="tipoDocumento" class="form-label">Tipo documento</label>
+              </div>
+              <div class="col-md-4">
+                <select #select class="form-select" formControlName="tipoDocumento" (change)="check()">
+                  <option value="null"></option>
+                  <option *ngFor="let tipo of tipiAllegato" value="{{tipo.id}}">{{tipo.descrizione}}</option>
+                </select>
+              </div>
+
+            </div>
+          </form>
+        </div>
+
+      </div>
+      <div class="row pt-2 overflow-auto m-auto" *ngIf="arrayToShowAllegati && arrayToShowAllegati!==[]">
+        <table mat-table *ngIf="dataSource1" [dataSource]="dataSource1" class="m-auto border">
+          <ng-container matColumnDef="Tipo Documento">
+            <th mat-header-cell *matHeaderCellDef class="text-info border text-center">
+              Tipo Documento
+            </th>
+            <td mat-cell *matCellDef="let element; index as i" class="border text-center p-1">
+              <select class="form-select" disabled>
+                <option value="{{ element.tipo }}">
+                  {{ element.tipo }}
+                </option>
+              </select>
+            </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="Nome">
+            <th mat-header-cell *matHeaderCellDef class="text-info border text-center">
+              Nome file
+            </th>
+            <td mat-cell *matCellDef="let element; index as i" class="border text-center p-1">
+              {{ element.file.name }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Dimensione">
+            <th mat-header-cell *matHeaderCellDef class="text-info border text-center">
+              Dimensioni
+            </th>
+            <td mat-cell *matCellDef="let element; index as i" class="border text-center p-1">
+              {{ element.file.size/1000 }}kb
+            </td>
+          </ng-container>
+
+          <!-- Weight Column  -->
+          <ng-container matColumnDef="Azioni">
+            <th mat-header-cell *matHeaderCellDef class="text-info border text-center">
+              Azioni
+            </th>
+            <td mat-cell *matCellDef="let element; index as i" class="border text-center p-1">
+              <button disableds class="btn btn-secondary " (click)="showFile(i)">
+                <i class="fa fa-eye text-primary"></i>
+              </button>
+              <button disableds class="btn btn-secondary m-1 " [disabled]="blockCancel" (click)="deleteFile(i)">
+                <i class="fa fa-times red"></i>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns1"></tr>
+        </table>
+      </div>
+
+      <div class="col-md-6" *ngIf="!filesAllegatiForm.controls['tipoDocumento'].disabled">
+        <div class="row p-2">
+          <div class="col-md-12 p-3">Carica File</div>
+          <div class="col-md-12">
+            <div class="row">
+
+              <div class="container p-5" *ngIf="filesAllegatiForm.controls['tipoDocumento'].value==null">
+                <p> Seleziona prima che tipo di documento vuoi caricare <i class="fa fa-arrow-up"></i></p>
+              </div>
+              <angular-file-uploader
+                *ngIf="filesAllegatiForm.controls['tipoDocumento'].value!=null && filesAllegatiForm.controls['tipoDocumento'].value!='' "
+                #fileUpload1 [config]="afuConfig" [resetUpload]=resetVar (fileSelected)="uploadFile($event)">
+              </angular-file-uploader>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6" *ngIf="!filesAllegatiForm.controls['tipoDocumento'].disabled">
+        <div class="row p-2">
+          <div class="col-md-12 p-3">
+            <div class="row">
+              <div class="col-md-12">Area preview</div>
+              <div class="col-md-12 d-flex justify-content-end">
+                <button class="btn" *ngIf="canIDeleteFile0" (click)="file0='';canIDeleteFile0=false">
+                  <span class="fa fa-times-circle text-danger"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12 text-danger" *ngIf="selezionaFile">
+            Carica un documento
+          </div>
+          <div class="col-md-12" *ngIf="file0">
+            <pdf-viewer #pdf [src]="pdfSrc0" [render-text]="true" [original-size]="false"></pdf-viewer>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 w-50 m-auto" *ngIf="filesAllegatiForm.controls['tipoDocumento'].disabled">
+        <div class="row p-2">
+          <div class="col-md-12 p-3">
+            <div class="row">
+              <div class="col-md-12">Area preview</div>
+              <div class="col-md-12 d-flex justify-content-end">
+                <button class="btn" *ngIf="canIDeleteFile0" (click)="file0='';canIDeleteFile0=false">
+                  <span class="fa fa-times-circle text-danger"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12 text-danger" *ngIf="selezionaFile">
+            Carica un documento
+          </div>
+          <div class="col-md-12" *ngIf="file0">
+            <pdf-viewer #pdf [src]="pdfSrc0" [render-text]="true" [original-size]="false"
+              style="width:90%; height:500px"></pdf-viewer>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 d-flex justify-content-end text-danger" *ngIf='dataSource1NotLongEnough'>
+      Devi caricare tutti e tre i tipi di documenti per poter salvarli.
+
+    </div>
+    <div class="col-md-12 d-flex justify-content-end">
+
+      <div class="row ">
+
+        <div class="col-md-6 mt-1">
+          <button type="button" class="btn btn-outline-dark" (click)="vaiIndietro()">Indietro</button>
+        </div>
+        <div class="col-md-6 mt-1">
+          <button type="button" class="btn btn-primary" (click)="postFilesAllegati()"
+            *ngIf="!filesAllegatiForm.disabled">
+            <i class="fa fa-save"></i> Salva
+          </button>
+          <button type="button" class="btn btn-primary" (click)="postFilesAllegati()"
+            *ngIf="filesAllegatiForm.disabled">
+            Contratti
+          </button>
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+</div>

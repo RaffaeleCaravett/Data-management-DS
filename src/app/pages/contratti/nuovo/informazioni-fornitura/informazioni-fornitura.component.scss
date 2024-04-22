@@ -1,0 +1,62 @@
+form.ng-submitted{
+    input.ng-invalid,
+  select.ng-invalid{
+    border: 1px solid red
+  }
+  input.ng-valid,
+  select.ng-valid{
+    border:1px solid green
+  }
+  
+  .has-error{
+    color:red
+  }
+  .is-valid{
+    color:green
+  }
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(1, 1, 58);; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(1, 1, 58); 
+  }
+  ::ng-deep pdf-viewer{
+    margin-bottom:5%;
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+    
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: #f1f1f1; 
+    }
+     
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: rgb(1, 1, 58);; 
+    }
+    
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgb(1, 1, 58); 
+    }
+  }
+  .width-90{
+    width:97%;
+    margin:auto;
+    margin-top: 1%;
+}

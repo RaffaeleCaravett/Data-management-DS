@@ -1,0 +1,71 @@
+.f{
+  font-size: 12px;
+  width: 50%;
+  margin: auto;
+}
+.m-3{
+  width: 25%;
+}
+.bg-warning{
+  border:none;
+}
+.blue{
+  border: 1px solid lightgray;
+  border-bottom: 5px solid blue;
+
+button:hover{
+  border-color:blue;
+  background-color: blue;
+  color:white;
+  transition:1s;
+}
+}
+.yellow{
+  border: 1px solid lightgray;
+  border-bottom: 5px solid rgb(208, 208, 23);
+ 
+  button:hover{
+    border-color:rgb(208, 208, 23);
+    background-color: rgb(208, 208, 23);
+    color:white;
+    transition:1s;
+  }
+}
+    .green{
+      border: 1px solid lightgray;
+      border-bottom: 5px solid green;
+    
+      button:hover{
+        border-color:green;
+        background-color: green;
+        color:white;
+        transition:1s;
+      }
+}
+.red{
+  border: 1px solid lightgray;
+    border-bottom: 5px solid red;
+
+    button:hover{
+      border-color:red;
+      background-color: red;
+      color:white;
+      transition:1s;
+    }
+  }
+.w{
+  width:90%
+}
+.col-md-5{
+  box-shadow: 3px 3px 3px lightgray;
+}
+
+.g-3{
+  margin:auto
+}
+@media screen and (max-width:778px) {
+  .a1{
+    height: fit-content;
+  }
+
+}

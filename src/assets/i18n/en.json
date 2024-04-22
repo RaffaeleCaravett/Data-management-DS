@@ -1,0 +1,26 @@
+{
+    "commonMessages": {
+      "send": "Send",
+      "back": "Back"
+    },
+    "login": {
+      "button": {
+        "forgotPassword": "Forgot your password?",
+        "login": "LOGIN",
+        "reset": "RESET"
+      }
+    },
+    "forgot": {
+      "title": "Forgot your password?",
+      "subTitle": "Enter your email in the input below and we will send you an email with the link to reset your password",
+      "title_reset": "Reset Password"
+    },
+    "validation": {
+      "pwd_required": "Password is required",
+      "confirm_pwd_required": "Confirm password is required",
+      "pwd_match":"Password and Repeat Password didn't match.",
+      "email_required": "Email is required",
+      "email_correct": "Please enter correct email",
+      "code_required": "Code is required"
+    }
+  }

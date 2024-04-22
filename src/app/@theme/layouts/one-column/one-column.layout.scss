@@ -1,0 +1,101 @@
+@import '../../styles/themes';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/breakpoints';
+
+@include nb-install-component() {
+  .menu-sidebar ::ng-deep .scrollable {
+    padding-top: nb-theme(layout-padding-top);
+
+
+    font-weight: bolder;
+    font-size: 24px;
+
+  
+  }
+}
+nb-layout-column{
+
+  mat-spinner{
+   margin:auto;
+   margin-top:20%
+  }
+}
+
+::ng-deep.nb-theme-default nb-user.size-medium .user-name {
+  font-size: 0.9375rem;
+  line-height: 1.25rem;
+  color: white;
+}
+::ng-deep{
+  .nb-theme-default nb-layout-header nav a {
+    color: white;
+}
+}
+::ng-deep .nb-theme-default nb-menu .menu-item a{
+  
+  color:rgb(1, 1, 58);
+  padding-bottom:5%;
+  padding-top:5%
+
+}
+::ng-deep.nb-theme-default nb-menu .menu-item .menu-icon{
+  color: rgb(1, 1, 58);
+}
+::ng-deep.nb-theme-default nb-menu .menu-item {
+  border-bottom: none
+}
+::ng-deep.nb-theme-default nb-sidebar .scrollable {
+  padding: 1.25rem;
+  position: relative;
+  background-color: rgb(255, 255, 255);
+ 
+}
+::ng-deep{
+  .nb-theme-default nb-layout.window-mode .layout nb-layout-header nav {
+    max-width: 1920px;
+    margin: 0 auto;
+    background: rgb(1, 1, 58);
+}
+}
+::ng-deep .nb-theme-default nb-menu .menu-item a.active {
+  background-color: rgb(1, 1, 58);
+  color: rgb(255, 255, 255);
+  &:hover{
+    background-color: rgb(1, 1, 58);
+    color: rgb(255, 255, 255);
+  }
+}
+::ng-deep.nb-theme-default nb-menu .menu-item a.active .menu-icon{
+  background-color: rgb(1, 1, 58);
+  color: rgb(255, 255, 255);
+  & :hover{
+    background-color: rgb(1, 1, 58);
+    color: rgb(255, 255, 255);
+  }
+}
+::ng-deep.nb-theme-default nb-menu .menu-item a:hover {
+  background-color: rgb(1, 1, 58);
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+::ng-deep.nb-theme-default nb-menu .menu-item a:hover .menu-icon{
+  background-color: rgb(1, 1, 58);
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+}
+::ng-deep.nb-theme-default nb-menu .menu-item > .menu-items > .menu-item a:hover {
+  background-color: rgb(1, 1, 58);
+  color: rgb(255, 255, 255);
+  border:none
+}
+::ng-deep.nb-theme-default nb-menu .menu-item > .menu-items > .menu-item a.active {
+&:hover{
+  background-color: rgb(1, 1, 58);
+  color: rgb(255, 255, 255);
+  border:none
+}
+
+  background-color: rgb(1, 1, 58);
+  color: rgb(255, 255, 255);
+  border:none
+}

@@ -1,0 +1,207 @@
+<ng-container *ngIf="chiaro">
+  <div class="row p-3" *ngFor="let item of profilo">
+    <div class="col-md-12 text-center">
+      <div class="d-flex justify-content-between">
+        <div></div>
+        <div class="text-center pl-5 ml-5">
+          <h6 class="text-dark ml-5 border-bottom p-2">PAGINA DEL PROFILO
+      <button class="btn btn-light text-dark" *ngIf="scuro==true" (click)="light()">Light</button>
+      <button class="btn btn-dark" *ngIf="chiaro==true && update==false" (click)="dark()">Dark</button></h6>
+    </div>
+      <div><button class="btn btn-light" (click)="update=!update">Modifica Profilo</button></div>
+      </div>
+  <div *ngIf="update==false">
+     <h1 class="text-primary">{{item.nome}} {{item.cognome}}</h1>
+    <p class="fs-6 w-50 m-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p class="f pt-2 pb-4">By Digiservice</p>
+
+    <div class="row">
+      <div class="col-md-6 p-2 h-100 text-center m-auto a1">
+        <div class=" bg-primary bg-gradient p-5 h-100 w m-auto border rounded shadow">
+          <img src="{{item.immagineProfilo}}" class="rounded-circle m-3">
+      <h1 class=" p-4 text-light">{{item.nome}} {{item.cognome}}</h1>
+      <button class="bg-warning btn">Scopri di più</button>
+        </div>
+
+    </div>
+      <div class="col-md-6 row">
+        <div class="col-md-6 p-1 text-center">
+          <div class="bg-light  rounded p-2 blue">
+            <i class="material-icons text-primary">computer</i>
+          <h2> {{item.utenze}} <span *ngIf="item.utenze==1"> utenza attiva</span><span *ngIf="item.utenze!=1"> utenze attive</span></h2>
+          <button class="mt-5 btn">Scopri di più</button>
+          </div>
+          
+        </div>
+        <div class="col-md-6 p-1 text-center">
+          <div class="bg-light  rounded p-2 red">
+            <i class="material-icons text-danger">location_on</i>
+          <h2>{{item.indirizzo}}</h2>
+          <button class="mt-5 btn">Scopri di più</button>
+          </div>
+          
+        </div>
+        <div class="col-md-6 p-1 text-center">
+          <div class="bg-light  rounded p-2 yellow">
+            <i class="material-icons text-warning">door_sliding</i>
+          <h2>{{item.allaccio}}</h2>
+          <button class="mt-5 btn">Scopri di più</button>
+          </div>
+          
+        </div>
+        <div class="col-md-6 p-1 text-center ">
+          <div class="bg-light  rounded p-2 green">
+            <i class="material-icons text-success">lightbulb</i>
+            
+            <i class="material-icons text-success">gas_meter</i>
+          <h2> "{{item.tipoContratto}}"</h2>
+          <button class="mt-5  btn">Scopri di più</button>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </div>
+ </div>
+</ng-container>
+
+<ng-container *ngIf="scuro">
+  <div class="row p-3" *ngFor="let item of profilo">
+    <div class="col-md-12 text-center">
+      <div class="d-flex justify-content-between">
+        <div></div>
+        <div class="text-center pl-5 ml-5">
+          <h6 class="text-dark ml-5 border-bottom p-2">PAGINA DEL PROFILO
+      <button class="btn btn-light text-dark" *ngIf="scuro==true" (click)="light()">Light</button>
+      <button class="btn btn-dark" *ngIf="chiaro==true && update==false" (click)="dark()">Dark</button></h6></div>
+      <div><button class="btn btn-dark" (click)="update=!update">Modifica Profilo</button></div>
+      </div>
+      <div *ngIf="update==false">
+    <h1 class="text-dark">{{item.nome}} {{item.cognome}}</h1>
+    <p class="fs-6 w-50 m-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p class="f pt-2 pb-4">By Digiservice</p>
+
+    <div class="row">
+      <div class="col-md-6 p-2 h-100 text-center m-auto a1">
+        <div class=" bg-dark bg-gradient p-5 h-100 w m-auto border rounded shadow">
+    
+          <img src="{{item.immagineProfilo}}" class="rounded-circle m-3">
+      <h1 class=" p-4 text-light">{{item.nome}} {{item.cognome}}</h1>
+      <button class="bg-warning btn">Scopri di più</button>
+        </div>
+
+    </div>
+      <div class="col-md-6 row">
+        <div class="col-md-6 p-3 text-center text-light">
+          <div class="p-3 rounded blue bg-dark bg-gradient">
+            <i class="material-icons text-primary">computer</i>
+          <h2 class="text-light">{{item.utenze}} <span *ngIf="item.utenze==1"> utenza attiva</span><span *ngIf="item.utenze!=1"> utenze attive</span></h2>
+          <button class="mt-5 btn text-light">Scopri di più</button>
+          </div>
+     
+        </div>
+        <div class="col-md-6 p-3  text-center text-light ">
+          <div class="p-3 rounded red bg-dark bg-gradient">
+            <i class="material-icons text-danger">location_on</i>
+          <h2 class="text-light">{{item.indirizzo}}</h2>
+          <button class="mt-5 btn text-light">Scopri di più</button>
+          </div>
+        
+        </div>
+        <div class="col-md-6 p-3 text-center text-light ">
+          <div class="p-3 rounded yellow bg-dark bg-gradient">
+            <i class="material-icons text-warning">door_sliding</i>
+          <h2 class="text-light">{{item.allaccio}}</h2>
+          <button class="mt-5 btn text-light">Scopri di più</button>
+          </div>
+         
+        </div>
+        <div class="col-md-6 p-3 text-center text-light">
+          <div class="p-3 rounded green bg-dark bg-gradient">
+            <i class="material-icons text-success">lightbulb</i>
+          
+            <i class="material-icons text-success">gas_meter</i>
+          <h2 class="text-light"> "{{item.tipoContratto}}"</h2>
+          <button class="mt-5 btn text-light">Scopri di più</button>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+  </div>
+</ng-container>
+<ng-container *ngIf="update==true">
+  <form [formGroup]="updateForm"  (ngSubmit)="Submit()">
+    <div class="row g-3 w-50">
+    <div class="col-md-6 pb-4">
+      <label  class="col-form-label">Nome</label>
+    </div>
+    <div class="col-md-6 pb-4">
+      <input type="text " class="form-control" required formControlName="nome">
+    </div>
+    <div class="col-md-6 pb-4">
+      <label  class="col-form-label">Cognome</label>
+    </div>
+    <div class="col-md-6 pb-4">
+      <input type="text" class="form-control" required formControlName="cognome">
+    </div>
+    <div class="col-md-6 pb-4">
+      <label  class="col-form-label">Utenze</label>
+    </div>
+    <div class="col-md-6 pb-4">
+      <input type="number" class="form-control" required formControlName="utenze">
+    </div>
+    <div class="col-md-6 pb-4">
+      <label  class="col-form-label">Immagine del profilo</label>
+    </div>
+    <div class="col-md-6 pb-4">
+      <input type="text" class="form-control" placeholder="../../assets/img/photo.jpg"  value="../../assets/img/photo.jpg" formControlName="immagineProfilo">
+    </div>
+    <div class="col-md-6 pb-4">
+      <label  class="col-form-label">Immagine di copertina</label>
+    </div>
+    <div class="col-md-6 pb-4">
+      <input type="text" class="form-control" value="../../../assets/img/CopertinaFB.jpg" placeholder="../../../assets/img/CopertinaFB.jpg" formControlName="ImmagineCopertina">
+    </div>
+    <div class="col-md-6 pb-4">
+      <label  class="col-form-label">Indirizzo</label>
+    </div>
+    <div class="col-md-6 pb-4">
+      <input type="text" class="form-control" required  formControlName="indirizzo">
+    </div>
+    <div class="col-md-6 pb-4">
+      <label  class="col-form-label">Data allaccio</label>
+    </div>
+    <div class="col-md-6 pb-4">
+      <input type="date" class="form-control" required  formControlName="allaccio">
+    </div>
+    <div class="col-md-6 pb-4">
+      <label  class="col-form-label">Codice Sito</label>
+    </div>
+    <div class="col-md-6 pb-4">
+      <input type="number" class="form-control" required  formControlName="codiceSito">
+    </div>
+    <div class="col-md-6 pb-4">
+      <label  class="col-form-label">Tipo del contratto</label>
+    </div>
+    <div class="col-md-6 pb-4">
+     <select class="form-control" required formControlName="tipoContratto">
+      <option value="Gas">Gas</option>
+      <option value="Luce">Luce</option>
+     </select>
+    </div>
+    <div class="col-md-6 pb-4">
+      <label  class="col-form-label">Descrizione</label>
+    </div>
+    <div class="col-md-6 pb-4">
+      <input type="text" class="form-control" required  formControlName="descrizione">
+    </div>
+ <button class="btn" style="background-color: rgb(1,1,58);color:white"  type="submit">Aggiorna profilo</button>
+  </div>
+  </form>
+
+</ng-container>

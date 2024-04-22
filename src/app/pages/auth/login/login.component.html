@@ -1,0 +1,35 @@
+<div class="row form" id="row-login">
+  <div class="col-md-4 offset-md-4 col-sm-6 offset-sm-3" id="col4-login">
+    <div class="card auth" id="card-auth-login">
+      <div class="card-body auth-card" id="card-body-login">
+        <div class="text bold" id="text-login">DM Login</div>
+        <form *ngIf="this.entityForm " [formGroup]="entityForm" class="form-horizontal bv-form" id="form-login"
+          style="padding: 17px;">
+          <div class="form-group" id="form-username-login">
+            <input class="form-control" formControlName="username" id="username-login" placeholder="Username" type="username-login">
+            <span *ngIf="submitted && entityForm.controls.username.errors?.required" class="validation-error valid"
+              id="req-login">
+              {{'validation.username_required' | translate}}
+            </span>
+            <br>
+          </div>
+          <div class="form-group" id="form-pwd-login">
+            <input class="form-control mt-" formControlName="password" id="password-login" placeholder="password"
+              type="password">
+            <span *ngIf="submitted && entityForm.controls.password.errors?.required" class="validation-error valid"
+              id="req-pas-login">{{'validation.pwd_required' | translate}}</span>
+            <br>
+          </div>
+          <div class="text-center" id="submit-login">
+            <button (click)="onSubmit()" [disabled]="!entityForm" class="btn btn-primary" data-bb-handler="success"
+              style="width: 100%; margin-top: -5%;" type="submit">{{ 'login.button.login' | translate}}</button>
+          </div>
+          <div class="text-center link" id="link-login">
+            <a [routerLink]="['/auth/forgot-password']">{{'login.button.forgotPassword' | translate}}</a>
+            <p>Versione : {{version}}</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

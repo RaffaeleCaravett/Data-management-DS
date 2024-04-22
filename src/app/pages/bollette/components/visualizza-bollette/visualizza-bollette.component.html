@@ -1,0 +1,93 @@
+
+<div class="row mt-3 shadow-sm rounded border p-1 bg-white">
+  <div class="col-md-6 p-3">
+    <nb-card class="mt-2">
+      <nb-card-header class="d-flex flex-row-reverse justify-content-around">
+         <img src="https://tdwi.org/-/media/TDWI/TDWI/BITW/datamgt3.jpg" class="shadow rounded-circle" alt="img"><h3 class="mazz">Dettagli bolletta {{id}}</h3> </nb-card-header>
+      <nb-card-body>
+        <form>
+          <div class="form-group row">
+            <label for="inputEmail1" class="label col-sm-3 col-form-label">ID fattura:</label>
+            <div class="col-sm-9">
+              <input type="number" class="form-control text-center" disabled  value="{{id}}">
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="inputPassword2" class="label col-sm-3 col-form-label">Indirizzo:</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control text-center" disabled value="{{bolletta.indirizzo}}">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword2" class="label col-sm-3 col-form-label">Tipo di fattura:</label>
+            <div class="col-sm-9">
+              <input type="password" class="form-control text-center" disabled value="{{bolletta.tipoFattura}}">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword2" class="label col-sm-3 col-form-label">Numero:</label>
+            <div class="col-sm-9">
+              <input type="password" class="form-control text-center" disabled value="{{bolletta.numero}}">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword2" class="label col-sm-3 col-form-label">Totale fattura:</label>
+            <div class="col-sm-9">
+              <input type="number" class="form-control text-center" disabled value="{{bolletta.totaleFattura}}">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword2" class="label col-sm-3 col-form-label">Consumo fatturato:</label>
+            <div class="col-sm-9">
+              <input type="number" class="form-control text-center" disabled value="{{bolletta.consumoFatturato}}">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword2" class="label col-sm-3 col-form-label">Consumo rilevato:</label>
+            <div class="col-sm-9">
+              <input type="number" class="form-control text-center" disabled value="{{bolletta.consumoRilevato}}">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword2" class="label col-sm-3 col-form-label">Anno:</label>
+            <div class="col-sm-9">
+              <input type="number" class="form-control text-center" disabled value="{{bolletta.anno}}">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword2" class="label col-sm-3 col-form-label">Mese:</label>
+            <div class="col-sm-9">
+              <input type="number" class="form-control text-center" disabled value="{{bolletta.mese}}">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword2" class="label col-sm-3 col-form-label">Codice sito:</label>
+            <div class="col-sm-9">
+              <input type="number" class="form-control text-center" disabled value="{{bolletta.codiceSito}}">
+            </div>
+          </div>
+          </form>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col-md-6 p-3" *ngIf="bolletta">
+    <nb-card class="mt-2">
+      <nb-card-header class="text-center">
+        <h3 class="mazz">Grafico dei consumi</h3>
+       </nb-card-header>
+   
+         <nb-card-body>
+    <div class="echartf p-1 pt-5">
+      <div echarts class="echart" [options]="options">
+    </div>
+  </div>
+            </nb-card-body>
+    
+     
+    </nb-card>
+          </div>
+
+        
+
+</div>

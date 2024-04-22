@@ -1,0 +1,22 @@
+
+.rounded-circle{
+  width:  70px;
+  height: 70px;
+}
+
+nb-card{
+  height: 95%; 
+  box-shadow: 3px 3px 3px 3px rgb(203, 203, 203);
+ ::ng-deep nb-card-header{
+    height: 15%;
+    border:none
+  }
+  ::ng-deep nb-card-body{
+    border:none
+  }
+}
+
+   
+
+
+
